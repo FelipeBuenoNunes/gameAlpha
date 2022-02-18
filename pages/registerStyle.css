@@ -42,8 +42,10 @@ main #content {
 }
 
 main #content .inputs {
-  margin: 100px 0 0 100px;
+  margin-top: 100px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 main #content .inputs input {
@@ -53,6 +55,10 @@ main #content .inputs input {
   border-bottom: 5px dashed var(--yellow);
   color: white;
   font-size: 28px;
+}
+
+main #content .inputs input:focus {
+  outline: none;
 }
 
 main #content .inputs h3 {
