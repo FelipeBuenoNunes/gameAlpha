@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="mainStyle.css" />
+    <title>Menu principal</title>
+  </head>
+  <body>
+    <aside>
+      <div id="rightleftborders"></div>
+      <div id="topbottomborders"></div>
+    </aside>
+    <main>
+      <div id="content">
+        <div class="title">
+          <div class="yellowSquare">
+            <h1 class="pinkText">a</h1>
+          </div>
+          <h1 class="pinkText">lpha</h1>
+        </div>
+        <div class="title">
+          <div class="yellowSquare">
+            <h3 class="cyanText">></h3>
+          </div>
+          <div class="yellowSquare">
+            <h3 class="blueText">p</h3>
+          </div>
+          <h3 class="blueText">uzzle</h3>
+        </div>
+        <div class="title" id="play">
+          <div class="inviSquare" id="playSquare"></div>
+          <div class="pinkSquare"><h3 class="yellowText">x</h3></div>
+          <h3 class="whiteText">jogar</h3>
+        </div>
+        <div class="title" id="tutorial">
+          <div class="inviSquare" id="tutorialSquare"></div>
+          <div class="pinkSquare"><h3 class="blueText" id="questionmark">?</h3></div>
+          <h3 class="whiteText">tutorial</h3>
+        </div>
+        <div class="title" id="options">
+          <div class="inviSquare" id="optionsSquare"></div>
+          <div class="pinkSquare"><img src="assets/icons/gear.png" id="gearimg"></div>
+          <h3 class="whiteText">opções</h3>
+        </div>
+        <div class="title" id="leaderboardbtn">
+          <div class="inviSquare" id="leaderboardSquare"></div>
+          <div class="pinkSquare"><img src="assets/icons/trophy.png" id="trophyimg"></div>
+          <h3 class="whiteText">leaderboard</h3>
+        </div>
+      </div>
+
+      <aside id="leaderboard">
+        <span id="closeldbrd">X</span>
+        <h2>Ranking</h2>
+        <ul>
+          <li>Athos</li>
+          <li>Felipe</li>
+          <li>Augusto</li>
+          <li>Rodrigo</li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </aside>
+      <section>
+        <div id="header">
+          <span id="closeregister">X</span>
+          <h1>Cadastro</h1>
+        </div>
+        <div id="registercontent">
+          <div class="inputs">
+            <h3>Nome:</h3>
+            <input type="text" id="nameInput" />
+          </div>
+          <div class="inputs">
+            <h3>Senha:</h3>
+            <input type="password" id="passwordInput" />
+          </div>
+          <div id="contentButton">
+            <button id="registerButton">Cadastrar</button>
+            <button id="loginButton">Entrar</button>
+          </div>
+          <div class="registerInfo"></div>
+        </div>
+      </section>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="mainScript.js"></script>
+  </body>
+</html>

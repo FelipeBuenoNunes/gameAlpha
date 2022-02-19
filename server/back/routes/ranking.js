@@ -9,6 +9,6 @@ module.exports = app => {
     });
 
     app.get('/ranking', (req, res) => {
-         res.json(getRanking());
+        res.json(getRanking());
     });
 }

@@ -12,15 +12,15 @@ module.exports = newUser => {
         if (data !== "Error") {
             newData = JSON.parse(data);
 
-            if (!newData.every(elem => elem.username !== newUser.username)) return "O username já está em uso";
+            if (!newData.every(elem => elem.username !== newUser.username)) return [403, "O username já está em uso"];
             newData.push(newUser);
         }
         fs.writeFileSync('./infrastructure/dataUsers.json', JSON.stringify(newData));
-        console.log(newData);
-        return { "username": newUser.username, "level": newUser.level, "moviesPiece": newUser.moviesPiece };
+        
+        return [201, { "username": newUser.username, "level": newUser.level, "moviesPiece": newUser.moviesPiece }];
     }
     catch (err) {
         console.log(err);
-        return err;
+        return [500, err];
     }
 }

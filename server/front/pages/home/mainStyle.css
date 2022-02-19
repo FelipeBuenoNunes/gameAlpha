@@ -1,0 +1,310 @@
+:root {
+  --black: #252525;
+  --pink: #e261aa;
+  --blue: #298ee9;
+  --yellow: #f8e415;
+  --cyan: #80e5b4;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Press Start 2P", cursive;
+}
+
+body {
+  background-color: var(--black);
+  -webkit-user-select: none; /* Safari */        
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+.yellowSquare {
+  margin: 2px;
+  width: 100px;
+  height: 100px;
+  border: 5px solid var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pinkSquare {
+  margin: 2px;
+  width: 100px;
+  height: 100px;
+  border: 5px solid var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inviSquare {
+  margin: 2px;
+  width: 110px;
+  height: 110px;
+}
+
+.blueText {
+  font-size: 80px;
+  color: var(--blue);
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.pinkText {
+  color: var(--pink);
+  font-size: 80px;
+  margin-top: 10px;
+}
+
+.cyanText {
+  color: var(--cyan);
+  font-size: 80px;
+}
+
+.yellowText {
+  color: var(--yellow);
+  font-size: 80px;
+  margin-left: 8px;
+}
+
+.whiteText {
+  color: white;
+  font-size: 70px;
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#content {
+  transition: transform 0.8s;
+}
+
+main aside {
+  border: 5px solid var(--yellow);
+  padding: 30px;
+  transition: right 1s;
+  position: absolute;
+  right: -500px;
+  top: 120px;
+  font-size: 28px;
+  color: var(--yellow);
+}
+
+main aside ul {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+main #content .title {
+  display: flex;
+  align-items: center;
+}
+
+img {
+  width: 125%;
+  height: 125%;
+}
+
+main aside span {
+  position: absolute;
+  cursor: pointer;
+  right: 380px;
+}
+
+@media (max-width: 950px) {
+  main aside {
+    font-size: 24px;
+  }
+
+  .yellowSquare,
+  .pinkSquare {
+    width: 50px;
+    height: 50px;
+  }
+
+  .inviSquare {
+    width: 60px;
+    height: 60px;
+  }
+
+  .yellowText,
+  .cyanText,
+  .blueText,
+  .pinkText {
+    font-size: 40px;
+  }
+
+  .whiteText {
+    font-size: 35px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: 750px) {
+  .yellowSquare,
+  .pinkSquare {
+    width: 30px;
+    height: 30px;
+  }
+
+  .inviSquare {
+    width: 40px;
+    height: 40px;
+  }
+
+  .yellowText,
+  .cyanText,
+  .blueText,
+  .pinkText {
+    font-size: 30px;
+  }
+
+  .whiteText {
+    font-size: 25px;
+    margin-left: 20px;
+  }
+}
+
+main section {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  right: -2000px;
+  top: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.8s;
+}
+
+main section #header {
+  width: 100%;
+  height: 150px;
+  font-size: 48px;
+  color: var(--pink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main section #registercontent {
+  width: 1200px;
+  height: 600px;
+  border: 5px dashed var(--yellow);
+}
+
+main section #registercontent .inputs {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main section #registercontent .inputs input {
+  width: 400px;
+  background-color: var(--black);
+  border: none;
+  border-bottom: 5px dashed var(--yellow);
+  color: white;
+  font-size: 28px;
+}
+
+main section #registercontent .inputs input:focus {
+  outline: none;
+}
+
+main section #registercontent .inputs h3 {
+  color: var(--blue);
+  font-size: 36px;
+}
+
+main section #registercontent .inputs #nameInput {
+  margin-left: 35px;
+}
+
+main section #registercontent #contentButton {
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+main section #registercontent #contentButton button {
+  padding: 30px;
+  background-color: var(--green);
+  font-size: 24px;
+  transition: 0.5s;
+  color: white;
+}
+
+main section #registercontent #contentButton button:hover {
+  background-color: #4d8a6c;
+  color: white;
+  cursor: pointer;
+}
+
+main section #registercontent .registerInfo {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main section #registercontent .registerInfo h3 {
+  font-size: 24px;
+  color: rgb(187, 48, 48);
+}
+
+main section #registercontent .registerInfo h2 {
+  font-size: 24px;
+  color: var(--green);
+}
+
+#closeregister {
+  position: absolute;
+  left: 140px;
+  top: 100px
+}
+
+#closeregister:hover {
+  cursor: pointer;
+}
+
+#rightleftborders {
+  width: 90vw;
+  height: 100vh;
+  border-left: 7px dashed var(--yellow);
+  border-right: 7px dashed var(--blue);
+  background-color: transparent;
+  position: absolute;
+  margin-left: 4vw;
+}
+
+#topbottomborders {
+  width: 100vw;
+  height: 90vh;
+  border-top: 7px dashed var(--pink);
+  border-bottom: 7px dashed var(--cyan);
+  background-color: transparent;
+  position: absolute;
+  margin-top: 4vh;
+}
