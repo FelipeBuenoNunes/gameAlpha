@@ -1,7 +1,4 @@
 $(function () {
-    console.log(sessionStorage.getItem('account'));
-    sessionStorage.clear();
-    //fazer o fetch
     printStage();
     printPieces();
     
@@ -13,9 +10,6 @@ $(function () {
         refreshPositions: true
     });
 
-    
-    let initialPos = []
-
     //$('.piece').on('mousedown', zIndex)
 
 
@@ -23,7 +17,10 @@ $(function () {
     $('.piece-color').on('dblclick', rotate)
 });
 
-async function sla(){
+const arr = sessionStorage.getItem('account');
+sessionStorage.clear();
+
+function sla(){
     $('.piece-rotate').css('transition', '0ms');
 }
 

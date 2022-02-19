@@ -111,6 +111,11 @@ $(document).ready(function () {
 });
 
 function login() {
+  if(!$("#nameInput").val() || !$("#passwordInput").val()){
+    console.log("O seu username está vazio ou a senha está vazia, ou algo deu errado");
+    return;
+  }
+  
   fetch("http://localhost:8080/login-user", {
     method: 'post',
     headers: {
@@ -127,10 +132,14 @@ function login() {
       return res.text();
     })
     .then(response => {
-      console.log(response);
-      sessionStorage.setItem('account', response);
-      window.location.href = '/game';
+      try{
+        sessionStorage.setItem('account', JSON.parse(response));
+        window.location.href = '/game';
+      }
+      catch(e){
+        console.log(e);
+        console.log(response);
+      }
     })
     .catch(e => console.log(e));
-  //sessionStorage.setItem('', );
 }
