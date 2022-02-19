@@ -49,7 +49,7 @@
     height: 50px;
     background-color: yellow;
     border: 1px solid black;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.25);    
+    /* box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.25);     */
 }
 .piece-empty {
     width: 50px;
