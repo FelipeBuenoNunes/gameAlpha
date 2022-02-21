@@ -1,28 +1,68 @@
+import { level, setGetId } from "./requisitions.js";
+
+try{
+    const session = JSON.parse(sessionStorage.getItem('account'));
+    setGetId(session.id);
+    sessionStorage.clear();
+}
+catch(e){
+    sessionStorage.clear();
+    window.location.href = "http://localhost:8000/"
+}
+
+let revertPiece;
+let dragging = 0;
 $(function () {
     printStage();
     printPieces();
     
-
     $('.piece').draggable({
         snap: '.stage-valid',
-        zIndex: 1,
-        cancel: '.piece-empty',
-        refreshPositions: true
+        handle: '.piece-color',
+        cursor: "grabbing",
+        stack: ".piece",
+        refreshPositions: true,
+        stop: function( event, ui) {
+            points++;            
+            validation(event);
+        },
+        revert: function(){
+            if(revertPiece > 1){
+                return true;
+            }else{
+                return false
+            }
+        },
+        drag: function(event, ui){
+            validation(event);
+        },
+        addClasses: false
+        
     });
 
-    //$('.piece').on('mousedown', zIndex)
-
-
-    $('.piece').on('mouseup', validation)
-    $('.piece-color').on('dblclick', rotate)
+    $('.piece-color').dblclick(rotate)
 });
 
-const arr = sessionStorage.getItem('account');
-sessionStorage.clear();
+let points = 0
+jQuery.fn.single_double_click = function(single_click_callback, double_click_callback, timeout) {
+    return this.each(function(){
+      var clicks = 0, self = this;
+      jQuery(this).click(function(event){
+        clicks++;
+        if (clicks == 1) {
+          setTimeout(function(){
+            if(clicks == 1) {
+              single_click_callback.call(self, event);
+            } else {
+              double_click_callback.call(self, event);
+            }
+            clicks = 0;
+          }, timeout || 300 );
+        }
+      });
+    });
+  }
 
-function sla(){
-    $('.piece-rotate').css('transition', '0ms');
-}
 
 function printStage() {
     const arr = [[0, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [0, 1, 1, 1, 0]];
@@ -45,17 +85,18 @@ const pieces = [
     {id:'piece4', shape: [[1,1,1]], deg: 0},
     {id:'piece5', shape: [[1,1],[1,1]], deg: 0},
     {id:'piece6', shape: [[1,0],[1,1],[0,1]], deg: 0},
-    {id:'piece7', shape: [[1,1,1]], deg: 0},
+    {id:'piece7', shape: [[1,0],[1,1],[0,1]], deg: 0},
     {id:'piece8', shape: [[1,1,1]], deg: 0},
     {id:'piece9', shape: [[1,1,1]], deg: 0},
-    {id:'piece10', shape: [[1,1],[1,1]], deg: 0}
+    {id:'piece10', shape: [[1,1,1]], deg: 0},
+    {id:'piece11', shape: [[1,1],[1,1]], deg: 0}
 ];
 
 
 function printPieces(){
     //forEach in the piece
     pieces.forEach(elem => {
-        $('#all').append(`<div class="piece piece-rotate" id="${elem.id}"></div>`);
+        $('#all').append(`<div class="piece" id="${elem.id}"></div>`);
         
         //forEach column in the piece
         elem.shape.forEach(column => {
@@ -69,56 +110,56 @@ function printPieces(){
     });
 }
 
-async function rotate(e){
-    const _e = e.target.offsetParent;   
+function rotate(e){
+    points++;
+    const _e = e.target.parentNode.offsetParent;   
     const _eId = _e.id.replace(/\D/g,'');
     const piece = pieces[_eId-1];
-    $('.piece-rotate').css('transition', '500ms');
+
+    $(_e).addClass('.piece-rotate');
+    $(_e).css('transition', '500ms');
     piece.deg += 90;    
     _e.style.transform = `rotate(${piece.deg}deg)`;
-    setInterval(sla, 1000);
-}
-
-//clicked on the piece, it up
-function zIndex(e){
-    initialPos = [];
-    initialPos.push(e.target.offsetParent.style.left.split('p')[0], e.target.offsetParent.style.top.split('p')[0]);
-    console.log(initialPos);
-    e.target.offsetParent.style.zIndex = 1;
+    var parent = e.target.parentNode;
+    var grandParent = parent.parentNode;
+    $(grandParent).draggable("disable");
+    setTimeout(() => {
+        $(_e).css('transition', '0ms');
+        $(_e).removeClass('.piece-rotate');
+        $(grandParent).draggable("enable");
+    }, 500);
+    
 }
 
 //Validation pieces on stage
 function validation(e){
+    revertPiece = 0;
     const allPieces = document.getElementsByClassName('piece-color');
     const stage = document.getElementsByClassName('stage-valid');
-    //let zoom = +window.getComputedStyle(document.body).zoom;
-    let zoom = 1
+    
     const positions = [];
     for(let elem of allPieces){
         elem = elem.getBoundingClientRect();
-        positions.push([elem.x * zoom, elem.y * zoom]);
+        positions.push([elem.x, elem.y]);
     }
     const validOrInvalid = [];
     for(let elem of stage){
         elem = elem.getBoundingClientRect();
-        let cont = 0;
         let valorVal;
         positions.forEach(validate => {
             if(parseInt(validate[0]) === parseInt(elem.x) && parseInt(validate[1]) === parseInt(elem.y)){
-                cont++;
+                revertPiece++;
             }
-            if(cont != 1){
+            if(revertPiece != 1){
                 valorVal = false;
             }else{
                 valorVal = true;
             }
-        })
-        validOrInvalid.push(valorVal);
-        if(cont > 1){
-            console.log(initialPos)
-            e.target.offsetParent.style.top = initialPos[1]+ "px"
-            e.target.offsetParent.style.left = initialPos[0]+ "px"
+        });
+        if(revertPiece == 1){
+            revertPiece = 0;
         }
+        validOrInvalid.push(valorVal);
     }
     //Here is the validation
     if(validOrInvalid.every(elem => elem)){
@@ -126,42 +167,5 @@ function validation(e){
     }else{
         $('.piece-color').css('background', 'yellow');
     }
-    
     e.target.offsetParent.style.zIndex = 0;
-}
-
-//Validating pieces on top of pieces // Não está usando mais
-function aboutPieces(currentElement, positions){
-    let _positions = [...positions];
-    const _currentElement = $(`#${currentElement.offsetParent.id} > div > div.piece-color`);
-    
-    const positionsCurrent = [];
-    for(let element of _currentElement){
-        element = element.getBoundingClientRect();
-        positionsCurrent.push([element.x, element.y]);
-    }
-    //filtering of equal elements 
-    for(let element of positionsCurrent){
-        _positions = _positions.filter(position => {
-            return !(element[0] == position[0] && element[1] == position[1])});
-    }
-
-    if(_positions.length < positions.length - _currentElement.length){
-        alert('Mudar posição')
-        return;
-    }
-
-    const sizePieces = _currentElement[0].getBoundingClientRect().width;
-    for(let position of _positions){
-        for(let positionCurrent of positionsCurrent){
-            if(positionCurrent[0] < position[0]+sizePieces && positionCurrent[0]+sizePieces > position[0] && positionCurrent[1] < position[1]+sizePieces && positionCurrent[1]+sizePieces > position[1]){
-                console.log("MUDAR POSIÇÃO");
-                const left = currentElement.offsetParent.style.left.split('p')[0]*1 + 50 + 'px';
-                const top = currentElement.offsetParent.style.left.split('p')[0]*1 + 50 + 'px';
-                currentElement.offsetParent.style.top = top;
-                currentElement.offsetParent.style.left = left;
-            }
-        }
-    }
-
 }

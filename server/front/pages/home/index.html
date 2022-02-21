@@ -42,21 +42,24 @@
         </div>
         <div class="title" id="tutorial">
           <div class="inviSquare" id="tutorialSquare"></div>
-          <div class="pinkSquare"><h3 class="blueText" id="questionmark">?</h3></div>
+          <div class="pinkSquare">
+            <h3 class="blueText" id="questionmark">?</h3>
+          </div>
           <h3 class="whiteText">tutorial</h3>
         </div>
         <div class="title" id="options">
           <div class="inviSquare" id="optionsSquare"></div>
-          <div class="pinkSquare"><img src="assets/icons/gear.png" id="gearimg"></div>
+          <div class="pinkSquare"><img src="assets/icons/gear.png" id="gearimg" /></div>
           <h3 class="whiteText">opções</h3>
         </div>
         <div class="title" id="leaderboardbtn">
           <div class="inviSquare" id="leaderboardSquare"></div>
-          <div class="pinkSquare"><img src="assets/icons/trophy.png" id="trophyimg"></div>
+          <div class="pinkSquare">
+            <img src="assets/icons/trophy.png" id="trophyimg" />
+          </div>
           <h3 class="whiteText">leaderboard</h3>
         </div>
       </div>
-
       <aside id="leaderboard">
         <span id="closeldbrd">X</span>
         <h2>Ranking</h2>
@@ -71,10 +74,10 @@
           <li></li>
         </ul>
       </aside>
-      <section>
+      <section id="registersect">
         <div id="header">
-          <span id="closeregister">X</span>
-          <h1>Cadastro</h1>
+          <span id="closeregister" class="closebtn">X</span>
+          <h2>Cadastro</h2>
         </div>
         <div id="registercontent">
           <div class="inputs">
@@ -92,8 +95,85 @@
           <div class="registerInfo"></div>
         </div>
       </section>
+
+      <section id="tutorialsect">
+        <div id="header">
+          <span id="closetutorial" class="closebtn">X</span>
+          <h2>Como jogar</h2>
+        </div>
+        <!-- Tentar passar para html... -->
+        <img
+          src="assets/icons/gamealphatuto.png"
+          draggable="false"
+          id="tutoimg"
+          alt=""
+        />
+      </section>
+      <section id="optionssect">
+        <div id="header">
+          <span id="closeoptions" class="closebtn">X</span>
+          <h2>Opções</h2>
+        </div>
+
+        <div id="settings">
+          <div class="settingContent">
+            <h3>TAMANHO DA FONTE</h3>
+            <div id="fontSettings">
+              <h3 class="settingButton">-</h3>
+              <div class="settingAssets">
+                <p id="smaller">A</p>
+              </div>
+              <div class="range">
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+              </div>
+              <div class="settingAssets">
+                <p id="larger">A</p>
+              </div>
+              <h3 class="settingButton">+</h3>
+            </div>
+          </div>
+
+          <div class="settingContent">
+            <h3>VOLUME GERAL</h3>
+            <div id="soundSettings">
+              <h3 class="settingButton">-</h3>
+              <div class="settingAssets">
+                <p>A</p>
+              </div>
+              <div class="range">
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+                <div class="rangeValue"><p>-</p></div>
+              </div>
+              <div class="settingAssets">
+                <p>A</p>
+              </div>
+              <h3 class="settingButton">+</h3>
+            </div>
+          </div>
+        </div>
+
+        <div id="settingInfos">
+          <h3>CREDITOS</h3>
+          <h3>INSERIR CODIGO</h3>
+          <h3>MAIS JOGOS</h3>
+        </div>
+      </section>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"
+    integrity="sha256-xH4q8N0pEzrZMaRmd7gQVcTZiFei+HfRTBPJ1OGXC0k=" crossorigin="anonymous">
+    </script>
     <script src="mainScript.js"></script>
   </body>
 </html>

@@ -1,10 +1,10 @@
 const fs = require('fs');
+const User = require('../class/User');
 const getUsers = require('./getUsers');
 
 module.exports = newUser => {
     try {
-        newUser.level = 1;
-        newUser.moviesPiece = 0;
+        newUser = new User(newUser.username, newUser.password);
 
         let newData = [newUser];
         const data = getUsers();
@@ -17,7 +17,7 @@ module.exports = newUser => {
         }
         fs.writeFileSync('./infrastructure/dataUsers.json', JSON.stringify(newData));
         
-        return [201, { "username": newUser.username, "level": newUser.level, "moviesPiece": newUser.moviesPiece }];
+        return [201, newUser];
     }
     catch (err) {
         console.log(err);

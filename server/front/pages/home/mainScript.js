@@ -87,9 +87,9 @@ $(document).ready(function () {
   $("#leaderboardbtn").mouseout(() => {
     $("#leaderboardSquare").removeClass("pinkSquare");
     $("#leaderboardSquare").addClass("inviSquare");
-    $("#trophyimg").css("display", "flex");
-    clearInterval(twinkleInterval);
-    twinkleCounter = 0;
+    $("#trophyimg").css("display", "flex")
+    clearInterval(twinkleInterval)
+    twinkleCounter = 0
   });
 
   $("#closeldbrd").on("click", () => {
@@ -97,26 +97,50 @@ $(document).ready(function () {
   });
 
   $("#play").on("click", () => {
-    $("#content").css("transform", "translate(-2000px)")
-    $("main section").css("transform", "translate(-2000px)")
+    $("main aside").css("right", "-500px")
+    $("#content").css("transform", "translate(-100vw)")
+    $("#registersect").css("transform", "translate(-100vw)")
   })
 
   $("#closeregister").on("click", () => {
     $("#content").css("transform", "translate(0px)")
-    $("main section").css("transform", "translate(1000px)")
+    $("#registersect").css("transform", "translate(50vw)")
   })
 
-  //Button login
-  $('#loginButton').on('click', login)
+  $("#tutorial").on("click", () => {
+    $("main aside").css("right", "-500px")
+    $("#content").css("transform", "translate(-100vw)")
+    $("#tutorialsect").css("transform", "translate(-100vw)")
+  })
+
+  $("#closetutorial").on("click", () => {
+    $("#content").css("transform", "translate(0px)")
+    $("#tutorialsect").css("transform", "translate(50vw)")
+  })
+
+  $("#options").on("click", () => {
+    $("main aside").css("right", "-500px")
+    $("#content").css("transform", "translate(-100vw)")
+    $("#optionssect").css("transform", "translate(-100vw)")
+  })
+
+  $("#closeoptions").on("click", () => {
+    $("#content").css("transform", "translate(0px)")
+    $("#optionssect").css("transform", "translate(50vw)")
+  })
+
+  //Button login and register
+  $('#loginButton, #registerButton').on('click', login)
 });
 
-function login() {
-  if(!$("#nameInput").val() || !$("#passwordInput").val()){
+function login(e) {
+  if (!$("#nameInput").val() || !$("#passwordInput").val()) {
     console.log("O seu username está vazio ou a senha está vazia, ou algo deu errado");
     return;
   }
-  
-  fetch("http://localhost:8080/login-user", {
+  console.log(e.target.id);
+  const route = e.target.id === "loginButton" ? 'login-user' : 'cadaster-user'
+  fetch("http://localhost:8080/"+route, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -132,11 +156,12 @@ function login() {
       return res.text();
     })
     .then(response => {
-      try{
-        sessionStorage.setItem('account', JSON.parse(response));
+      try {
+        JSON.parse(response)
+        sessionStorage.setItem('account', response);
         window.location.href = '/game';
       }
-      catch(e){
+      catch (e) {
         console.log(e);
         console.log(response);
       }
