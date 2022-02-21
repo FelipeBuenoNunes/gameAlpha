@@ -3,9 +3,6 @@ const audioDrag = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-money-b
 const audioDrop = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3");
 
 $(function () {
-    console.log(sessionStorage.getItem('account'));
-    sessionStorage.clear();
-    //fazer o fetch
     printStage();
     printPieces();
     
