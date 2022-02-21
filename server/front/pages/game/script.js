@@ -12,6 +12,10 @@ catch(e){
 
 let revertPiece;
 let dragging = 0;
+const audioDrag = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-money-bag-drop-1989.mp3");
+
+const audioDrop = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3");
+
 $(function () {
     printStage();
     printPieces();
@@ -22,6 +26,9 @@ $(function () {
         cursor: "grabbing",
         stack: ".piece",
         refreshPositions: true,
+        start: function() {
+            $(audioDrag)[0].play();
+        },
         stop: function( event, ui) {
             points++;            
             validation(event);
