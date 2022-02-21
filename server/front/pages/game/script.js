@@ -1,3 +1,7 @@
+const audioDrag = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-money-bag-drop-1989.mp3");
+
+const audioDrop = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3");
+
 $(function () {
     console.log(sessionStorage.getItem('account'));
     sessionStorage.clear();
@@ -10,18 +14,35 @@ $(function () {
         snap: '.stage-valid',
         zIndex: 1,
         cancel: '.piece-empty',
-        refreshPositions: true
+        refreshPositions: true,
+        start: function() {
+            $(audioDrag)[0].play();
+        }
     });
 
     
     let initialPos = []
 
-    //$('.piece').on('mousedown', zIndex)
+    $('.piece').on('mousedown', zIndex)
 
 
     $('.piece').on('mouseup', validation)
     $('.piece-color').on('dblclick', rotate)
+    $('.piece-color').on('mousedow').css('background', 'green');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async function sla(){
     $('.piece-rotate').css('transition', '0ms');
