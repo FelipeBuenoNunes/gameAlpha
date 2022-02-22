@@ -60,7 +60,7 @@ module.exports = (user) => {
 
         fs.writeFileSync('./infrastructure/dataUsers.json', JSON.stringify(dataUsers));
 
-        return "Cadastrado com sucesso";
+        return "Atualizado com sucesso";
     }
     catch (e) {
         console.log(e);
