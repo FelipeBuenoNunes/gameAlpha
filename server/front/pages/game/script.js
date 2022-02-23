@@ -39,8 +39,6 @@ function setEvents(){
         },
         stop: function( event, ui) {
             console.log(addPoint());
-            let a = $('.piece').draggable("option", "revert")
-            console.log(a)
             if($('.piece').draggable("option", "revert") == false){
                 validation(event);
             }          
@@ -67,7 +65,7 @@ function printStage(arr) {
         $('section > div.stage').append('<div class="column"></div>');
         for (let column of elem) {
             const classDiv = column ? "stage-valid" : "stage-invalid";
-            $('section > div.stage > div:last-child').append(`<div class="${classDiv}"></div>`)
+            $('section > div.stage > div:last-child').append(`<div class="${classDiv}"></div>`);
         }
     });
 }
@@ -142,7 +140,6 @@ function validation(e){
         setGetAccount('add');
         requisitions();
     }
-    e.target.offsetParent.style.zIndex = 0;
 }
 
 // ------------------Validation stage pieces on top of stage pieces
@@ -167,7 +164,9 @@ function reverseValidation(e){
             revertPiece = 0;
         }
         if(revertPiece > 1){
-            $('.piece').draggable("option", "revert", true)
+            $('.piece').draggable("option", "revert", true);
+        }else{
+            $('.piece').draggable("option", "revert", false);
         }
     }
 }
