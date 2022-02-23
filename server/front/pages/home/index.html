@@ -11,6 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="mainStyle.css" />
+    <link rel="stylesheet" href="media.css">
     <title>Menu principal</title>
   </head>
   <body>
@@ -54,10 +55,8 @@
         </div>
         <div class="title" id="leaderboardbtn">
           <div class="inviSquare" id="leaderboardSquare"></div>
-          <div class="pinkSquare">
-            <img src="assets/icons/trophy.png" id="trophyimg" />
-          </div>
-          <h3 class="whiteText">leaderboard</h3>
+          <div class="pinkSquare"><img src="assets/icons/trophy.png" id="gearimg" /></div>
+          <h3 class="whiteText" id="ldbrdtext">leaderboard</h3>
         </div>
       </div>
       <aside id="leaderboard">
@@ -101,13 +100,20 @@
           <span id="closetutorial" class="closebtn">X</span>
           <h2>Como jogar</h2>
         </div>
-        <!-- Tentar passar para html... -->
-        <img
-          src="assets/icons/gamealphatuto.png"
-          draggable="false"
-          id="tutoimg"
-          alt=""
-        />
+        <div id="tutorialimgs">
+          <div>
+            <img src="assets/icons/tuto01.png" class="tutoimg" alt="">
+            <span class="tutoarrow">-></span>
+            <img src="assets/icons/tuto02.png" class="tutoimg" alt="">
+            <span class="tutoarrow">-></span>
+            <img src="assets/icons/tuto03.png" class="tutoimg" alt="">
+          </div>
+          <div>
+            <img src="assets/icons/tuto04.png" class="tutoimg" alt="">
+            <span class="tutoarrow">-></span>
+            <img src="assets/icons/tuto05.png" class="tutoimg" alt="">
+          </div>
+        </div>
       </section>
       <section id="optionssect">
         <div id="header">

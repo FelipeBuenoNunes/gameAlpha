@@ -93,13 +93,13 @@ $(document).ready(function () {
   });
 
   $("#closeldbrd").on("click", () => {
-    $("main aside").css("right", "-500px")
+    $("main aside").css("right", "-100vw")
   });
 
   $("#play").on("click", () => {
-    $("main aside").css("right", "-500px")
-    $("#content").css("transform", "translate(-100vw)")
-    $("#registersect").css("transform", "translate(-100vw)")
+    $("main aside").css("right", "-100vw")
+    $("#content").css("transform", "translate(-150vw)")
+    $("#registersect").css("transform", "translate(-150vw)")
   })
 
   $("#closeregister").on("click", () => {
@@ -108,9 +108,9 @@ $(document).ready(function () {
   })
 
   $("#tutorial").on("click", () => {
-    $("main aside").css("right", "-500px")
-    $("#content").css("transform", "translate(-100vw)")
-    $("#tutorialsect").css("transform", "translate(-100vw)")
+    $("main aside").css("right", "-100vw")
+    $("#content").css("transform", "translate(-150vw)")
+    $("#tutorialsect").css("transform", "translate(-150vw)")
   })
 
   $("#closetutorial").on("click", () => {
@@ -119,9 +119,9 @@ $(document).ready(function () {
   })
 
   $("#options").on("click", () => {
-    $("main aside").css("right", "-500px")
-    $("#content").css("transform", "translate(-100vw)")
-    $("#optionssect").css("transform", "translate(-100vw)")
+    $("main aside").css("right", "-100vw")
+    $("#content").css("transform", "translate(-150vw)")
+    $("#optionssect").css("transform", "translate(-150vw)")
   })
 
   $("#closeoptions").on("click", () => {
@@ -132,6 +132,7 @@ $(document).ready(function () {
   //Button login and register
   $('#loginButton, #registerButton').on('click', login)
 });
+
 
 function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
