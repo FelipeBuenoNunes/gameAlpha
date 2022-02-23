@@ -81,7 +81,7 @@ $(document).ready(function () {
   });
 
   $("#leaderboardbtn").on("click", () => {
-    $("main aside").css("right", "180px")
+    ranking();
   });
 
   $("#leaderboardbtn").mouseout(() => {
@@ -133,7 +133,7 @@ $(document).ready(function () {
   $('#loginButton, #registerButton').on('click', login)
 });
 
-
+const url = "http://localhost:8080/";
 function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
     console.log("O seu username está vazio ou a senha está vazia, ou algo deu errado");
@@ -141,7 +141,7 @@ function login(e) {
   }
   console.log(e.target.id);
   const route = e.target.id === "loginButton" ? 'login-user' : 'cadaster-user'
-  fetch("http://localhost:8080/"+route, {
+  fetch(url + route, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
@@ -168,4 +168,12 @@ function login(e) {
       }
     })
     .catch(e => console.log(e));
+}
+
+
+function ranking() {
+  fetch(url + 'ranking')
+    .then(response => response.json())
+    .then(out => console.log(out))
+  $("#leaderboard").css("display", "flex");
 }

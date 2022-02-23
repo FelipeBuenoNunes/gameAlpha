@@ -387,59 +387,20 @@ main section #registercontent .registerInfo h2 {
   margin-top: 2vh;
 }
 
-.stage{
-  display: flex;
+section#leaderboard{
+  background-color: rgba(240, 248, 255, 0.185);
+  width: 100vw;
+  height: 100vh;
+  display: none;
   justify-content: center;
-  align-self: center;
-  margin-top: 12vw;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.stage-valid {
-  width: 2vw;
-  height: 2vw;
-  background-color: rgb(219, 170, 106);
-  border: 1px solid black;
-}
-
-.stage-invalid {
-  width: 2vw;
-  height: 2vw;
-  background-color: brown;
-}
-
-#all {
-  display: flex;
-  flex-wrap: wrap;
-  width: 500px;
-  height: 400px;
-  bottom: 10px;
-  column-gap: 20px;
-  border: 1px solid black;
-  justify-content: center;
-}
-
-#all > div{
-  display: flex;
-}
-
-.piece{
-  width: fit-content;
-  height: fit-content;
-  box-shadow: none;
-}
-
-.piece-color{
-  width: 2vw;
-  height: 2vw;
-  background-color: yellow;
-  border: 1px solid black;
-}
-
-.piece-empty {
-  width: 2vw;
-  height: 2vw;
-}
-
-.piece-rotate{
-  transition: 0ms;
+section#leaderboard > div{
+  color: white;
+  background-color: #252525;
+  width: 50vw;
+  height: 70vh;
 }

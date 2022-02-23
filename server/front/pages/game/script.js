@@ -1,20 +1,21 @@
 import { level, setGetAccount, addPoint } from "./requisitions.js";
 let pieces;
-$(function(){
-    try{
+$(function () {
+    try {
         const session = JSON.parse(sessionStorage.getItem('account'))
-        if(session === null) throw new Error('error');
+        if (session === null) throw new Error('error');
         setGetAccount(session);
         sessionStorage.clear();
         requisitions();
     }
-    catch(e){
+    catch (e) {
         sessionStorage.clear();
         window.location.href = "http://localhost:8000/"
     }
 });
 
-async function requisitions(){
+async function requisitions() {
+    console.log("a");
     const lvl = await level(setGetAccount().level);
     printStage(lvl.stage);
     pieces = lvl.pieces
@@ -27,28 +28,34 @@ const audioDrag = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-money-b
 const audioDrop = new Audio("https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3");
 
 //Set events every elements
-function setEvents(){    
+function setEvents() {
+    $( ".stage-valid" ).droppable({
+        drop: function( event, ui ) {
+          alert('aaaa');
+        },
+        accept: ".piece-color",
+        greedy: true
+      });
+
     $('.piece').draggable({
-        snap: '.stage-valid' ,
+        snap: '.stage-valid',
         handle: '.piece-color',
         cursor: "grabbing",
         stack: ".piece",
         refreshPositions: true,
-        start: function() {
+        start: function () {
             $(audioDrag)[0].play();
         },
-        stop: function( event, ui) {
-            console.log(addPoint());
-            if($('.piece').draggable("option", "revert") == false){
+        stop: function (event, ui) {
+            $('#moves').text('Nº de movimentos: ' + addPoint());
+            if ($('.piece').draggable("option", "revert") == false) {
                 validation(event);
-            }          
+            }
         },
-        drag: function( event, ui) {          
+        drag: function (event, ui) {
             reverseValidation(event);
         },
         revert: false,
-        addClasses: false
-        
     });
 
     $('.piece-color').dblclick(rotate)
@@ -57,8 +64,6 @@ function setEvents(){
 //--------------------Print Stage
 function printStage(arr) {
     $('section').html('');
-    $('section').append('<div id="all"></div>')
-    //const arr = [[0, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [0, 1, 1, 1, 0]];
     $('section').append('<div class="stage"></div>');
     //forEach piece of the stage
     arr.forEach(elem => {
@@ -71,18 +76,19 @@ function printStage(arr) {
 }
 
 //------------------- Print Pieces
-function printPieces(){
+function printPieces() {
+    $('#piecesContent').html('');
     //forEach in the piece
     pieces.forEach(elem => {
-        $('#all').append(`<div class="piece" id="${elem.id}"></div>`);
-        
+        $('#piecesContent').append(`<div class="piece" id="${elem.id}"></div>`);
+
         //forEach column in the piece
         elem.shape.forEach(column => {
-            $('#all > div:last-child').append('<div></div>');
+            $('#piecesContent > div:last-child').append('<div></div>');
             //forEach line of the column of the piece
             column.forEach(line => {
                 const hasColor = line ? "piece-color" : "piece-empty";
-                $('#all > div:last-child > div:last-child').append(`<div class="${hasColor}"></div>`);
+                $('#piecesContent > div:last-child > div:last-child').append(`<div class="${hasColor}"></div>`);
             })
         })
     });
@@ -90,14 +96,14 @@ function printPieces(){
 }
 
 // ------------------Rotate
-function rotate(e){
-    console.log(addPoint());
-    const _e = e.target.parentNode.offsetParent;   
-    const _eId = _e.id.replace(/\D/g,'');
-    const piece = pieces[_eId-1];
+function rotate(e) {
+    $('#moves').text('Nº de movimentos: ' + addPoint());
+    const _e = e.target.parentNode.offsetParent;
+    const _eId = _e.id.replace(/\D/g, '');
+    const piece = pieces[_eId - 1];
 
     $(_e).css('transition', '500ms');
-    piece.deg += 90;    
+    piece.deg += 90;
 
     _e.style.transform = `rotate(${piece.deg}deg)`;
     const parent = e.target.parentNode;
@@ -112,60 +118,71 @@ function rotate(e){
 
 
 // ------------------Validation pieces on stage
-function validation(e){
+function validation(e) {
     revertPiece = 0;
     const allPieces = document.getElementsByClassName('piece-color');
     const stage = document.getElementsByClassName('stage-valid');
-    
+
     const positions = [];
-    for(let elem of allPieces){
+    for (let elem of allPieces) {
         elem = elem.getBoundingClientRect();
         positions.push([elem.x, elem.y]);
     }
     const validOrInvalid = [];
-    for(let elem of stage){
+    for (let elem of stage) {
         elem = elem.getBoundingClientRect();
         let valorVal;
         positions.forEach(validate => {
-            if(parseInt(validate[0]) === parseInt(elem.x) && parseInt(validate[1]) === parseInt(elem.y)){
+            if (parseInt(validate[0]) === parseInt(elem.x) && parseInt(validate[1]) === parseInt(elem.y)) {
                 valorVal = true;
             }
         });
-        
+
         validOrInvalid.push(valorVal);
     }
     //Here is the validation
-    if(validOrInvalid.every(elem => elem)){
+    if (validOrInvalid.every(elem => elem)) {
         $('.piece-color').css('background', 'green');
-        setGetAccount('add');
-        requisitions();
+        const timeout = setTimeout(() => {
+            $("#myModal").css("display", "none");
+            setGetAccount('add');
+            requisitions();
+        }, 3000);
+
+        $("#myModal").css("display", "block");
+        $(".close").click(() => {
+            clearTimeout(timeout);
+            $("#myModal").css("display", "none");
+            setGetAccount('add');
+            requisitions();
+        });
     }
 }
 
 // ------------------Validation stage pieces on top of stage pieces
-function reverseValidation(e){
+function reverseValidation(e) {
     revertPiece = 0;
     const allPieces = document.getElementsByClassName('piece-color');
     const stage = document.getElementsByClassName('stage-valid');
-    
+
     const positions = [];
-    for(let elem of allPieces){
+    for (let elem of allPieces) {
         elem = elem.getBoundingClientRect();
         positions.push([elem.x, elem.y]);
     }
-    for(let elem of stage){
+    for (let elem of stage) {
         elem = elem.getBoundingClientRect();
         positions.forEach(validate => {
-            if(parseInt(validate[0]) === parseInt(elem.x) && parseInt(validate[1]) === parseInt(elem.y)){
+            if (parseInt(validate[0]) === parseInt(elem.x) && parseInt(validate[1]) === parseInt(elem.y)) {
                 revertPiece++;
             }
         });
-        if(revertPiece == 1){
+        if (revertPiece == 1) {
             revertPiece = 0;
         }
-        if(revertPiece > 1){
+        if (revertPiece > 1) {
             $('.piece').draggable("option", "revert", true);
-        }else{
+        } else {
             $('.piece').draggable("option", "revert", false);
         }
     }

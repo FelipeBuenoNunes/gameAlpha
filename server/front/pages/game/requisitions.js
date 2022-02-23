@@ -6,7 +6,7 @@ export async function level(lvl) {
 }
 let points = 0;
 
-export const addPoint = () => points++;
+export const addPoint = () => ++points;
 
 
 let saveAccount;
