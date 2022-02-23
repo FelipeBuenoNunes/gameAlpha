@@ -15,7 +15,7 @@ $(function(){
 });
 
 async function requisitions(){
-    const lvl = await level(await setGetAccount().level);  
+    const lvl = await level(setGetAccount().level);
     printStage(lvl.stage);
     pieces = lvl.pieces
     printPieces();
@@ -145,12 +145,8 @@ function validation(e){
     //Here is the validation
     if(validOrInvalid.every(elem => elem)){
         $('.piece-color').css('background', 'green');
-        outraFase();
+        setGetAccount('add');
+        requisitions();
     }
     e.target.offsetParent.style.zIndex = 0;
-}
-
-function outraFase(){
-    console.log(setGetAccount('add'));
-    requisitions();
 }
