@@ -63,6 +63,7 @@ function setEvents() {
 
 //--------------------Print Stage
 function printStage(arr) {
+    $('#moves').text('Nº de movimentos: ' + 0);
     $('section').html('');
     $('section').append('<div class="stage"></div>');
     //forEach piece of the stage
