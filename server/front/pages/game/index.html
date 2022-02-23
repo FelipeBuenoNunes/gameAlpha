@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+    <title>GAME</title>
+  </head>
 
-  <title>GAME</title>
-</head>
-
-<body>
-  <header>
-    <h1>Fase 1</h1>
-    <h3 id="moves">Nº de movimentos: 0</h3>
-  </header>
-  <main>
-    <div id="pieces">
-      <div id="piecesHeader">
-        <h2>Peças</h2>
+  <body>
+    <header>
+      <h1>Fase 1</h1>
+      <h3 id="moves">Nº de movimentos: 0</h3>
+    </header>
+    <main>
+      <div id="pieces">
+        <div id="piecesHeader">
+          <h2>Peças</h2>
+        </div>
+        <div id="piecesContent"></div>
       </div>
-      <div id="piecesContent"></div>
-    </div>
-    <section id="stage"></section>
+      <section id="stage"></section>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <div class="modal-header">
-          <span class="close">&times;</span>
-          <br />
-          <h2>Parabéns Jogador!</h2>
-          <br />
-        </div>
-        <div class="modal-body">
-          <br /><br /><br /><br />
-          <p>Você concluiu essa fase!</p>
-          <img src="assets/icons/trophy.png" />
-          <p>Continue com mais desafios e não desista!</p>
-        </div>
-        <div class="modal-footer">
-          <br />
-          <h3>Boa sorte na Próxima Fase!</h3>
-          <br />
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <br />
+            <h2>Parabéns Jogador!</h2>
+            <br />
+          </div>
+          <div class="modal-body">
+            <br /><br /><br /><br />
+            <p>Você concluiu essa fase!</p>
+            <img src="assets/icons/trophy.png" />
+            <p>Continue com mais desafios e não desista!</p>
+          </div>
+          <div class="modal-footer">
+            <br />
+            <h3>Boa sorte na Próxima Fase!</h3>
+            <br />
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-  <script type="module" src="script.js"></script>
-</body>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>

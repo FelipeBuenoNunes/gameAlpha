@@ -1,13 +1,17 @@
-const getUsers = require('./getUsers');
+const getUsers = require("./getUsers");
 
-module.exports = () => {    
-    const users = JSON.parse(getUsers());
+module.exports = () => {
+  const users = JSON.parse(getUsers());
 
-    if(users === "Error") return [];
+  if (users === "Error") return [];
 
-    const userReturn = users.map(elem => { 
-        return {"username": elem.username, "level": elem.level, "moviesPiece": elem.moviesPiece};
-    });
+  const userReturn = users.map((elem) => {
+    return {
+      username: elem.username,
+      level: elem.level,
+      moviesPiece: elem.moviesPiece,
+    };
+  });
 
-    return userReturn;
-} 
+  return userReturn;
+};

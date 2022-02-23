@@ -5,20 +5,20 @@ $(document).ready(function () {
     $("#playSquare").addClass("pinkSquare");
     twinkleInterval = setInterval(() => {
       if (twinkle == false) {
-        $(".yellowText").css("display", "none")
+        $(".yellowText").css("display", "none");
         twinkle = true;
       } else {
-        $(".yellowText").css("display", "flex")
+        $(".yellowText").css("display", "flex");
         twinkle = false;
       }
-    }, 250)
+    }, 250);
   });
 
   $("#play").mouseout(() => {
     $("#playSquare").removeClass("pinkSquare");
     $("#playSquare").addClass("inviSquare");
-    $(".yellowText").css("display", "flex")
-    clearInterval(twinkleInterval)
+    $(".yellowText").css("display", "flex");
+    clearInterval(twinkleInterval);
     twinkle = false;
   });
 
@@ -27,20 +27,20 @@ $(document).ready(function () {
     $("#tutorialSquare").addClass("pinkSquare");
     twinkleInterval = setInterval(() => {
       if (twinkle == false) {
-        $("#questionmark").css("display", "none")
+        $("#questionmark").css("display", "none");
         twinkle = true;
       } else {
-        $("#questionmark").css("display", "flex")
+        $("#questionmark").css("display", "flex");
         twinkle = false;
       }
-    }, 250)
+    }, 250);
   });
 
   $("#tutorial").mouseout(() => {
     $("#tutorialSquare").removeClass("pinkSquare");
     $("#tutorialSquare").addClass("inviSquare");
-    $("#questionmark").css("display", "flex")
-    clearInterval(twinkleInterval)
+    $("#questionmark").css("display", "flex");
+    clearInterval(twinkleInterval);
     twinkle = false;
   });
 
@@ -49,20 +49,20 @@ $(document).ready(function () {
     $("#optionsSquare").addClass("pinkSquare");
     twinkleInterval = setInterval(() => {
       if (twinkle == false) {
-        $("#gearimg").css("display", "none")
+        $("#gearimg").css("display", "none");
         twinkle = true;
       } else {
-        $("#gearimg").css("display", "flex")
+        $("#gearimg").css("display", "flex");
         twinkle = false;
       }
-    }, 250)
+    }, 250);
   });
 
   $("#options").mouseout(() => {
     $("#optionsSquare").removeClass("pinkSquare");
     $("#optionsSquare").addClass("inviSquare");
-    $("#gearimg").css("display", "flex")
-    clearInterval(twinkleInterval)
+    $("#gearimg").css("display", "flex");
+    clearInterval(twinkleInterval);
     twinkle = false;
   });
 
@@ -71,13 +71,13 @@ $(document).ready(function () {
     $("#leaderboardSquare").addClass("pinkSquare");
     twinkleInterval = setInterval(() => {
       if (twinkle == false) {
-        $("#trophyimg").css("display", "none")
+        $("#trophyimg").css("display", "none");
         twinkle = true;
       } else {
-        $("#trophyimg").css("display", "flex")
+        $("#trophyimg").css("display", "flex");
         twinkle = false;
       }
-    }, 250)
+    }, 250);
   });
 
   $("#leaderboardbtn").on("click", () => {
@@ -87,93 +87,93 @@ $(document).ready(function () {
   $("#leaderboardbtn").mouseout(() => {
     $("#leaderboardSquare").removeClass("pinkSquare");
     $("#leaderboardSquare").addClass("inviSquare");
-    $("#trophyimg").css("display", "flex")
-    clearInterval(twinkleInterval)
-    twinkleCounter = 0
+    $("#trophyimg").css("display", "flex");
+    clearInterval(twinkleInterval);
+    twinkleCounter = 0;
   });
 
   $("#closeldbrd").on("click", () => {
-    $("main aside").css("right", "-100vw")
+    $("main aside").css("right", "-100vw");
   });
 
   $("#play").on("click", () => {
-    $("main aside").css("right", "-100vw")
-    $("#content").css("transform", "translate(-150vw)")
-    $("#registersect").css("transform", "translate(-150vw)")
-  })
+    $("main aside").css("right", "-100vw");
+    $("#content").css("transform", "translate(-150vw)");
+    $("#registersect").css("transform", "translate(-150vw)");
+  });
 
   $("#closeregister").on("click", () => {
-    $("#content").css("transform", "translate(0px)")
-    $("#registersect").css("transform", "translate(50vw)")
-  })
+    $("#content").css("transform", "translate(0px)");
+    $("#registersect").css("transform", "translate(50vw)");
+  });
 
   $("#tutorial").on("click", () => {
-    $("main aside").css("right", "-100vw")
-    $("#content").css("transform", "translate(-150vw)")
-    $("#tutorialsect").css("transform", "translate(-150vw)")
-  })
+    $("main aside").css("right", "-100vw");
+    $("#content").css("transform", "translate(-150vw)");
+    $("#tutorialsect").css("transform", "translate(-150vw)");
+  });
 
   $("#closetutorial").on("click", () => {
-    $("#content").css("transform", "translate(0px)")
-    $("#tutorialsect").css("transform", "translate(50vw)")
-  })
+    $("#content").css("transform", "translate(0px)");
+    $("#tutorialsect").css("transform", "translate(50vw)");
+  });
 
   $("#options").on("click", () => {
-    $("main aside").css("right", "-100vw")
-    $("#content").css("transform", "translate(-150vw)")
-    $("#optionssect").css("transform", "translate(-150vw)")
-  })
+    $("main aside").css("right", "-100vw");
+    $("#content").css("transform", "translate(-150vw)");
+    $("#optionssect").css("transform", "translate(-150vw)");
+  });
 
   $("#closeoptions").on("click", () => {
-    $("#content").css("transform", "translate(0px)")
-    $("#optionssect").css("transform", "translate(50vw)")
-  })
+    $("#content").css("transform", "translate(0px)");
+    $("#optionssect").css("transform", "translate(50vw)");
+  });
 
   //Button login and register
-  $('#loginButton, #registerButton').on('click', login)
+  $("#loginButton, #registerButton").on("click", login);
 });
 
 const url = "http://localhost:8080/";
 function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
-    console.log("O seu username está vazio ou a senha está vazia, ou algo deu errado");
+    console.log(
+      "O seu username está vazio ou a senha está vazia, ou algo deu errado"
+    );
     return;
   }
   console.log(e.target.id);
-  const route = e.target.id === "loginButton" ? 'login-user' : 'cadaster-user'
+  const route = e.target.id === "loginButton" ? "login-user" : "cadaster-user";
   fetch(url + route, {
-    method: 'post',
+    method: "post",
     headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
+      "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify({
-      "username": $("#nameInput").val(),
-      "password": $("#passwordInput").val()
-    })
+      username: $("#nameInput").val(),
+      password: $("#passwordInput").val(),
+    }),
   })
-    .then(res => {
+    .then((res) => {
       if (!res.ok) throw new Error(res);
       return res.text();
     })
-    .then(response => {
+    .then((response) => {
       try {
-        JSON.parse(response)
-        sessionStorage.setItem('account', response);
-        window.location.href = '/game';
-      }
-      catch (e) {
+        JSON.parse(response);
+        sessionStorage.setItem("account", response);
+        window.location.href = "/game";
+      } catch (e) {
         console.log(e);
         console.log(response);
       }
     })
-    .catch(e => console.log(e));
+    .catch((e) => console.log(e));
 }
 
-
 function ranking() {
-  fetch(url + 'ranking')
-    .then(response => response.json())
-    .then(out => console.log(out))
+  fetch(url + "ranking")
+    .then((response) => response.json())
+    .then((out) => console.log(out));
   $("#leaderboard").css("display", "flex");
 }

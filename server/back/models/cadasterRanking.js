@@ -15,13 +15,12 @@
 //         });
 
 //         dataUsers.sort(
-//             function(a, b) {          
+//             function(a, b) {
 //                if (a.level === b.level) {
 //                   return a.moviesPiece - borinthg.moviesPiece;
 //                }
 //                return b.level - a.level;
 //             });
-         
 
 //         fs.writeFileSync('./infrastructure/dataUsers.json', JSON.stringify(dataUsers));
 
@@ -33,37 +32,37 @@
 //     }
 // }
 
-const fs = require('fs');
-const getUsers = require('./getUsers');
+const fs = require("fs");
+const getUsers = require("./getUsers");
 
 module.exports = (user) => {
-    try {
-        const dataUsers = JSON.parse(getUsers());
+  try {
+    const dataUsers = JSON.parse(getUsers());
 
-        dataUsers.some(userCurrent => {
-            if (userCurrent.id === user.id) {
-                userCurrent.level += 1;
-                userCurrent.moviesPiece += Number(user.moviesPiece);
-                return true;
-            }
-            return false;
-        });
+    dataUsers.some((userCurrent) => {
+      if (userCurrent.id === user.id) {
+        userCurrent.level += 1;
+        userCurrent.moviesPiece += Number(user.moviesPiece);
+        return true;
+      }
+      return false;
+    });
 
-        dataUsers.sort(
-            function(a, b) {          
-               if (a.level === b.level) {
-                  return a.moviesPiece - b.moviesPiece;
-               }
-               return b.level - a.level;
-            });
-         
+    dataUsers.sort(function (a, b) {
+      if (a.level === b.level) {
+        return a.moviesPiece - b.moviesPiece;
+      }
+      return b.level - a.level;
+    });
 
-        fs.writeFileSync('./infrastructure/dataUsers.json', JSON.stringify(dataUsers));
+    fs.writeFileSync(
+      "./infrastructure/dataUsers.json",
+      JSON.stringify(dataUsers)
+    );
 
-        return "Atualizado com sucesso";
-    }
-    catch (e) {
-        console.log(e);
-        return e;
-    }
-}
+    return "Atualizado com sucesso";
+  } catch (e) {
+    console.log(e);
+    return e;
+  }
+};
