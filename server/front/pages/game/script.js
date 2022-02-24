@@ -15,6 +15,7 @@ $(function () {
 
 async function requisitions() {
   const lvl = await level(setGetAccount().level);
+  $('#level-header').text("Fase: "+lvl.level) 
   printStage(lvl.stage);
   pieces = lvl.pieces;
   printPieces();
@@ -22,9 +23,10 @@ async function requisitions() {
 
 let revertPiece;
 let dragging = 0;
-const audioDrag = new Audio(
-  "https://assets.mixkit.co/sfx/preview/mixkit-money-bag-drop-1989.mp3"
-);
+const audioDrag = new Audio('./assets/songs/drag.mp3');
+const entrar = new Audio('./assets/songs/entrar.mp3');
+const celebration = new Audio('./assets/songs/celebration.mp3');
+entrar.play();
 const audioDrop = new Audio(
   "https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3"
 );
@@ -152,13 +154,11 @@ function validation(e) {
   //Here is the validation
   if (validOrInvalid.every((elem) => elem)) {
     $(".piece-color").css("background", "green");
-    // $(".close").click(function(e){
-    //     x = $(this).parents();
-    //     $(this).parents()[2].style.display = "none"
-    // })
+    celebration.play();
     if(!setGetAccount("add")) $('#modal-reset').css('display', 'block');
     else $("#myModal").css("display", "block");
     $("#close-lvl").click(() => {
+      $("#myModal").css("display", "none");
       requisitions();
     });
     $("#close-final").click(() => {
@@ -166,7 +166,6 @@ function validation(e) {
     })
   }
 }
-var x;
 
 // ------------------Validation stage pieces on top of stage pieces
 function reverseValidation(e) {

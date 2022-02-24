@@ -1,4 +1,3 @@
-$('.modal').css('display', "block")
 $(document).ready(function () {
   let twinkle = false;
   $("#play").mouseover(() => {
@@ -172,9 +171,33 @@ function login(e) {
     .catch((e) => console.log(e));
 }
 
+
+//----------MODAL--------------//
+
+
+
+
 function ranking() {
+  $('#ranking-persons').html('');
   fetch(url + "ranking")
-    .then((response) => response.json())
-    .then((out) => console.log(out));
-  $("#leaderboard").css("display", "flex");
+  .then((response) => response.json())
+  .then(out => printModal(out));
+  
+  function printModal(users) {
+    let cont = 1;
+    for (let user of users) {
+      if (cont > 10) break;
+      $('#ranking-persons').append('<tr></tr>');
+      $('#ranking-persons > tr:last-child')
+      .append(`<td>${cont}º</td>`)
+      .append(`<td>${user.username}</td>`)
+      .append(`<td>${user.level}</td>`)
+      .append(`<td>${user.moviesPiece}</td>`)
+      cont++;
+    }
+    $('.modal').css('display', "block");
+  }
+  $('.close').click(() => {
+    $('.modal').css('display', 'none');
+  })
 }

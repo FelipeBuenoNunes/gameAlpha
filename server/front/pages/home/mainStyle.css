@@ -42,8 +42,8 @@ body {
 
 .inviSquare {
   margin: 2px;
-  width: 6.2vw;
-  height: 6.2vw;
+  width: calc(5.6vw + 10px);
+  height: 6.11w;
 }
 
 .blueText {
