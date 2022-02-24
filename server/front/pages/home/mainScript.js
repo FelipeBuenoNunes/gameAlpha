@@ -1,3 +1,4 @@
+$('.modal').css('display', "block")
 $(document).ready(function () {
   let twinkle = false;
   $("#play").mouseover(() => {
@@ -66,28 +67,28 @@ $(document).ready(function () {
     twinkle = false;
   });
 
+  $("#leaderboardbtn").on("click", () => {
+    ranking();
+  });
+
   $("#leaderboardbtn").mouseover(() => {
     $("#leaderboardSquare").removeClass("inviSquare");
     $("#leaderboardSquare").addClass("pinkSquare");
     twinkleInterval = setInterval(() => {
       if (twinkle == false) {
-        $("#trophyimg").css("display", "none");
+        $("#trophy").css("display", "none");
         twinkle = true;
       } else {
-        $("#trophyimg").css("display", "flex");
+        $("#trophy").css("display", "flex");
         twinkle = false;
       }
     }, 250);
   });
 
-  $("#leaderboardbtn").on("click", () => {
-    ranking();
-  });
-
   $("#leaderboardbtn").mouseout(() => {
     $("#leaderboardSquare").removeClass("pinkSquare");
     $("#leaderboardSquare").addClass("inviSquare");
-    $("#trophyimg").css("display", "flex");
+    $("#trophy").css("display", "flex");
     clearInterval(twinkleInterval);
     twinkleCounter = 0;
   });

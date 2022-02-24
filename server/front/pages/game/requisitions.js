@@ -11,8 +11,12 @@ export const addPoint = () => ++points;
 let saveAccount;
 export function setGetAccount(account) {
   if (account === "add") {
-    saveAccount.level++;
-    return updateRanking();
+    updateRanking();
+    if(saveAccount.level !== 10) {
+      saveAccount.level++;
+      return true;
+    }
+    return false;
   } else if (saveAccount) return saveAccount;
   else saveAccount = account;
 }

@@ -14,7 +14,6 @@ $(function () {
 });
 
 async function requisitions() {
-  console.log("a");
   const lvl = await level(setGetAccount().level);
   printStage(lvl.stage);
   pieces = lvl.pieces;
@@ -153,21 +152,21 @@ function validation(e) {
   //Here is the validation
   if (validOrInvalid.every((elem) => elem)) {
     $(".piece-color").css("background", "green");
-    const timeout = setTimeout(() => {
-      $("#myModal").css("display", "none");
-      setGetAccount("add");
-      requisitions();
-    }, 3000);
-
-    $("#myModal").css("display", "block");
-    $(".close").click(() => {
-      clearTimeout(timeout);
-      $("#myModal").css("display", "none");
-      setGetAccount("add");
+    // $(".close").click(function(e){
+    //     x = $(this).parents();
+    //     $(this).parents()[2].style.display = "none"
+    // })
+    if(!setGetAccount("add")) $('#modal-reset').css('display', 'block');
+    else $("#myModal").css("display", "block");
+    $("#close-lvl").click(() => {
       requisitions();
     });
+    $("#close-final").click(() => {
+        window.location.href = "http://localhost:8000/";
+    })
   }
 }
+var x;
 
 // ------------------Validation stage pieces on top of stage pieces
 function reverseValidation(e) {

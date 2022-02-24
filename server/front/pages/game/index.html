@@ -34,7 +34,7 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div class="modal-header">
-            <span class="close">&times;</span>
+            <span class="close" id="close-lvl">&times;</span>
             <br />
             <h2>Parabéns Jogador!</h2>
             <br />
@@ -48,6 +48,32 @@
           <div class="modal-footer">
             <br />
             <h3>Boa sorte na Próxima Fase!</h3>
+            <br />
+          </div>
+        </div>
+      </div>
+
+      <div id="modal-reset" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close" id="close-final">&times;</span>
+            <br />
+            <h2>Parabéns Você Finalizou o Puzzle!</h2>
+            <br />
+          </div>
+          <div class="modal-body">
+            <br /><br /><br /><br />
+            <p>Você é um verdadeiro Campeão!</p>
+            <img src="assets/icons/trophy.png" />
+            <p>Resete para melhorar sua pontuação,</p>
+            <br/>
+            <p>ou mantenha sua atual colocação no Ranking!</p>
+            <button id="reset">Resetar</button> <button id="manter">Manter</button>
+          </div>
+          <div class="modal-footer">
+            <br />
+            <h3>Seu nome pode estar na pagina inicial!</h3>
             <br />
           </div>
         </div>
