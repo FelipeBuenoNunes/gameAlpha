@@ -136,12 +136,10 @@ $(document).ready(function () {
 const url = "http://localhost:8080/";
 function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
-    console.log(
-      "O seu username está vazio ou a senha está vazia, ou algo deu errado"
-    );
+    console.log("O seu username está vazio ou a senha está vazia");
     return;
   }
-  console.log(e.target.id);
+
   const route = e.target.id === "loginButton" ? "login-user" : "cadaster-user";
   fetch(url + route, {
     method: "post",
@@ -164,7 +162,6 @@ function login(e) {
         sessionStorage.setItem("account", response);
         window.location.href = "/game";
       } catch (e) {
-        console.log(e);
         console.log(response);
       }
     })
@@ -180,19 +177,19 @@ function login(e) {
 function ranking() {
   $('#ranking-persons').html('');
   fetch(url + "ranking")
-  .then((response) => response.json())
-  .then(out => printModal(out));
-  
+    .then((response) => response.json())
+    .then(out => printModal(out));
+
   function printModal(users) {
     let cont = 1;
     for (let user of users) {
       if (cont > 10) break;
       $('#ranking-persons').append('<tr></tr>');
       $('#ranking-persons > tr:last-child')
-      .append(`<td>${cont}º</td>`)
-      .append(`<td>${user.username}</td>`)
-      .append(`<td>${user.level}</td>`)
-      .append(`<td>${user.moviesPiece}</td>`)
+        .append(`<td>${cont}º</td>`)
+        .append(`<td>${user.username}</td>`)
+        .append(`<td>${user.level}</td>`)
+        .append(`<td>${user.moviesPiece}</td>`)
       cont++;
     }
     $('.modal').css('display', "block");

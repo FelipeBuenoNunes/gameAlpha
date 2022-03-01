@@ -42,6 +42,7 @@ function setEvents() {
   });
 
   $(".piece").draggable({
+    containment: 'main',
     snap: ".stage-valid",
     handle: ".piece-color",
     cursor: "grabbing",
@@ -142,8 +143,10 @@ function validation(e) {
     let valorVal;
     positions.forEach((validate) => {
       if (
-        parseInt(validate[0]) === parseInt(elem.x) &&
-        parseInt(validate[1]) === parseInt(elem.y)
+        parseInt(validate[0]) >= parseInt(elem.x)-1 &&
+        parseInt(validate[0]) <= parseInt(elem.x)+1 &&
+        parseInt(validate[1]) >= parseInt(elem.y)-1 &&
+        parseInt(validate[1]) <= parseInt(elem.y)+1 
       ) {
         valorVal = true;
       }

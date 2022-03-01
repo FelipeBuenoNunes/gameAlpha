@@ -1,12 +1,11 @@
 const fs = require("fs");
-const crypto = require("crypto-js");
-var SHA256 = require("crypto-js/sha256");
 const User = require("../class/User");
 const getUsers = require("./getUsers");
+const crypto = require("crypto");
 
 module.exports = (newUser) => {
   try {
-    newUser.password = SHA256(newUser.password).toString(crypto.enc.Base64);
+    newUser.password = crypto.createHash('sha256').update(newUser.password).digest('base64');
     newUser = new User(newUser.username, newUser.password);
 
     let newData = [newUser];

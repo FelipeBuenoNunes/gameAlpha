@@ -1,18 +1,13 @@
 const cadasterUser = require("../models/cadasterUser");
 const loginUser = require("../models/loginUser");
+const resetAccount = require("../models/resetAccount");
 
 module.exports = (app) => {
   // req.body tem que conter {'username', 'password'}
   app.post("/cadaster-user", (req, res) => {
-    if (
-      !req.body.username ||
-      !req.body.password ||
-      Object.keys(req.body).length !== 2
-    ) {
+    if (!req.body.username || !req.body.password || Object.keys(req.body).length !== 2) {
       res.status(400);
-      res.send(
-        "O seu username está vazio ou a senha está vazia, ou algo deu errado"
-      );
+      res.send("O seu username está vazio ou a senha está vazia, ou algo deu errado");
     } else {
       const response = cadasterUser(req.body);
       if (response[0] === 201) {
@@ -45,5 +40,10 @@ module.exports = (app) => {
         res.end("Algo deu errado!");
       }
     }
+  });
+
+  app.put("/reset-account", (req, res) => {
+    if(!req.body.id || req.body.length > 1) res.send('O ID precisa ser enviado!');
+    else res.send(resetAccount(req.body.id));
   });
 };

@@ -1,13 +1,10 @@
-const crypto = require("crypto-js");
-const SHA256 = require("crypto-js/sha256");
+const crypto = require("crypto");
 const getUsers = require("./getUsers");
 
 module.exports = (user) => {
   try {
-    const userCurrent = JSON.parse(getUsers()).filter(
-      (element) => element.username === user.username
-    )[0];
-    user.password = SHA256(user.password).toString(crypto.enc.Base64);
+    const userCurrent = JSON.parse(getUsers()).filter((element) => element.username === user.username)[0];
+    user.password = crypto.createHash('sha256').update(user.password).digest('base64');
     if (!userCurrent || userCurrent.password !== user.password)
       return "Usuário ou senha incorreta";
     else return [200, userCurrent];

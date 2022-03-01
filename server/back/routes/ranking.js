@@ -1,10 +1,9 @@
-const cadasterRanking = require("../models/cadasterRanking");
+const cadasterRanking = require("../models/updateRanking");
 const getRanking = require("../models/getRanking");
 
 module.exports = (app) => {
   // req.body tem que conter {'user', 'movesPiece', 'id'}
   app.put("/ranking", (req, res) => {
-    console.log(req.body);
     if (
       !req.body.username ||
       !req.body.id ||
