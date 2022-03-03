@@ -10,8 +10,8 @@
   }
 
   .inviSquare {
-    width: 60px;
-    height: 60px;
+    width: 54px;
+    height: 54px;
   }
 
   .yellowText,
@@ -25,453 +25,48 @@
     font-size: 35px;
     margin-left: 20px;
   }
-}
-
-@media (max-width: 740px) {
-  .yellowSquare,
-  .pinkSquare {
-    width: 30px;
-    height: 30px;
-  }
-
-  .inviSquare {
-    width: 40px;
-    height: 40px;
-  }
-
-  .yellowText,
-  .cyanText,
-  .blueText,
-  .pinkText {
-    font-size: 30px;
-  }
-
-  .whiteText {
-    font-size: 25px;
-    margin-left: 20px;
-  }
-}
-
-@media (orientation: portrait) {
-  :root {
-    --black: #252525;
-    --pink: #e261aa;
-    --blue: #298ee9;
-    --yellow: #f8e415;
-    --cyan: #80e5b4;
-  }
-
-  * {
-    margin: 0;
-    padding: 0;
-    font-family: "Press Start 2P", cursive;
-  }
-
-  body {
-    background-color: var(--black);
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
-  }
-
-  .yellowSquare {
-    margin: 2px;
-    width: 7vw;
-    height: 7vw;
-    border: 0.8vw solid var(--yellow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .pinkSquare {
-    margin: 2px;
-    width: 7vw;
-    height: 7vw;
-    border: 0.8vw solid var(--pink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .inviSquare {
-    margin: 2px;
-    width: 8vw;
-    height: 8vw;
-    display: none;
-  }
-
-  .blueText {
-    font-size: 6vw;
-    color: var(--blue);
-    margin-left: 8px;
-    margin-top: 8px;
-  }
-
-  .pinkText {
-    color: var(--pink);
-    font-size: 6vw;
-    margin-top: 10px;
-  }
-
-  .cyanText {
-    color: var(--cyan);
-    font-size: 6vw;
-  }
-
-  .yellowText {
-    color: var(--yellow);
-    font-size: 6vw;
-    margin-left: 8px;
-  }
-
-  .whiteText {
-    color: white;
-    font-size: 6vw;
-    margin-left: 2vw;
-    cursor: pointer;
-  }
-
-  main {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-
-  #content {
-    transition: transform 0.8s;
-  }
-
-  main aside {
-    border: 4px solid var(--yellow);
-    padding: 20px;
-    transition: right 0.8s;
-    position: absolute;
-    right: -100vw;
-    top: 120px;
-    font-size: 2.6vw;
-    color: var(--yellow);
-  }
-
-  main aside ul {
-    margin-top: 20px;
-    margin-left: 10px;
-  }
-
-  main #content .title {
-    display: flex;
-    align-items: center;
-  }
 
   img {
-    width: 125%;
-    height: 125%;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-
-  main aside span {
-    position: absolute;
-    cursor: pointer;
-    right: 36vw;
-  }
-
-  main section {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    position: absolute;
-    right: -150vw;
-    top: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.8s;
-  }
-
-  main section #header {
-    width: 100%;
-    height: 8vh;
-    font-size: 4vw;
-    color: var(--pink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  main section #registercontent {
-    width: 80vw;
-    height: 30vh;
-    border: none;
-  }
-
-  main section #registercontent .inputs {
-    margin-top: 4vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  main section #registercontent .inputs input {
-    width: 40vw;
-    background-color: var(--black);
-    border: none;
-    border-bottom: 2px dashed var(--yellow);
-    color: white;
-    font-size: 2vw;
-  }
-
-  main section #registercontent .inputs input:focus {
-    outline: none;
-  }
-
-  main section #registercontent .inputs h3 {
-    color: var(--blue);
-    font-size: 4vw;
-  }
-
-  main section #registercontent .inputs #nameInput {
-    margin-left: 1vw;
-  }
-
-  main section #registercontent #contentButton {
-    margin-top: 7vw;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-  }
-
-  main section #registercontent #contentButton button {
-    padding: 10px;
-    background-color: var(--green);
-    font-size: 2vw;
-    transition: 0.5s;
-    color: white;
-  }
-
-  main section #registercontent #contentButton button:hover {
-    background-color: #4d8a6c;
-    color: white;
-    cursor: pointer;
-  }
-
-  main section #registercontent .registerInfo {
-    width: 100%;
-    margin-top: 7vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  main section #registercontent .registerInfo h3 {
-    font-size: 2vw;
-    color: rgb(187, 48, 48);
-  }
-
-  main section #registercontent .registerInfo h2 {
-    font-size: 2vw;
-    color: var(--green);
-  }
-
-  #tutoimg {
-    width: 86vw;
+    width: 50px;
     height: auto;
   }
 
-  .closebtn {
-    position: absolute;
-    left: 10vw;
-    top: 8vh;
-    font-size: 6vw;
+  #innerP {
+    margin: 0;
   }
 
-  .closebtn:hover {
-    cursor: pointer;
+  #innerIcon {
+    margin: 5px 0 0 0;
   }
 
-  #rightleftborders {
-    width: 90vw;
-    height: 100vh;
-    border-left: 1vw dashed var(--yellow);
-    border-right: 1vw dashed var(--blue);
-    background-color: transparent;
-    position: absolute;
-    margin-left: 3.4vw;
-    opacity: 0.4;
+  main section #header {
+    font-size: 28px;
   }
 
-  #topbottomborders {
-    width: 100vw;
-    height: 90vh;
-    border-top: 1vw dashed var(--pink);
-    border-bottom: 1vw dashed var(--cyan);
-    background-color: transparent;
-    position: absolute;
-    margin-top: 4vh;
-    opacity: 0.4;
+  main section #registercontent {
+    width: 600px;
+    height: 300px;
   }
 
-  #settings {
-    text-align: center;
+  main section #registercontent .inputs {
+    margin: 35px 0 0 0;
   }
 
-  #settings h3 {
-    font-size: 2vw;
-    color: var(--yellow);
+  main section #registercontent .inputs input {
+    width: 400px;
+    font-size: 16px;
   }
 
-  #settings p {
-    font-size: 3vw;
-    color: white;
+  main section #registercontent .inputs h3 {
+    font-size: 18px;
   }
 
-  #settings .settingContent {
-    margin-top: 3vh;
+  main section #registercontent #contentButton {
+    margin-top: 35px;
   }
 
-  #larger {
-    font-size: 5vw;
-  }
-
-  #settings #fontSettings {
-    margin-top: 2vh;
-    display: flex;
-    align-items: center;
-  }
-
-  #settings #soundSettings {
-    margin-top: 2vh;
-    display: flex;
-    align-items: center;
-  }
-
-  #settings #fontSettings #larger {
-    font-size: 5vw;
-  }
-
-  #settings .settingButton {
-    font-size: 3vw;
-    margin: 0 1vh;
-    cursor: pointer;
-  }
-
-  #settings .settingAssets {
-    width: 5vw;
-    height: 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  #settings #fontSettings .settingAssets p {
-    bottom: 0;
-  }
-
-  #settings .range {
-    display: flex;
-    margin: 0 1vh;
-  }
-
-  #settings #fontSettings .range .rangeValue {
-    width: 3vw;
-    height: 3vw;
-  }
-
-  #settingInfos {
-    text-align: center;
-  }
-
-  #settingInfos {
-    font-size: 2vw;
-    color: var(--yellow);
-  }
-
-  #settingInfos h3 {
-    margin-top: 40px;
-    cursor: pointer;
-  }
-
-  #gamesect h2,
-  h5 {
-    color: white;
-    margin-top: 1vh;
-  }
-
-  #gameboard {
-    width: 50vw;
-    height: 70vh;
-    padding: 10px;
-    border: 1px solid var(--yellow);
-    margin-top: 2vh;
-  }
-
-  .stage {
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    margin-top: 140px;
-  }
-
-  .stage-valid {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(219, 170, 106);
-    border: 1px solid black;
-  }
-
-  .stage-invalid {
-    width: 40px;
-    height: 40px;
-    background-color: brown;
-  }
-
-  #all {
-    display: flex;
-    flex-wrap: wrap;
-    width: 500px;
-    height: 400px;
-    bottom: 10px;
-    column-gap: 20px;
-    border: 1px solid black;
-    justify-content: center;
-  }
-
-  #all > div {
-    display: flex;
-  }
-
-  .piece {
-    width: fit-content;
-    height: fit-content;
-    box-shadow: none;
-  }
-
-  .piece-color {
-    width: 40px;
-    height: 40px;
-    background-color: yellow;
-    border: 1px solid black;
-  }
-
-  .piece-empty {
-    width: 40px;
-    height: 40px;
-  }
-
-  .piece-rotate {
-    transition: 0ms;
+  main section #registercontent #contentButton button {
+    padding: 18px;
+    font-size: 16px;
   }
 }

@@ -15,7 +15,7 @@ $(function () {
 
 async function requisitions() {
   const lvl = await level(setGetAccount().level);
-  $('#level-header').text("Fase: "+lvl.level) 
+  $("#level-header").text("Fase: " + lvl.level);
   printStage(lvl.stage);
   pieces = lvl.pieces;
   printPieces();
@@ -23,9 +23,9 @@ async function requisitions() {
 
 let revertPiece;
 let dragging = 0;
-const audioDrag = new Audio('./assets/songs/drag.mp3');
-const entrar = new Audio('./assets/songs/entrar.mp3');
-const celebration = new Audio('./assets/songs/celebration.mp3');
+const audioDrag = new Audio("./assets/songs/drag.mp3");
+const entrar = new Audio("./assets/songs/entrar.mp3");
+const celebration = new Audio("./assets/songs/celebration.mp3");
 entrar.play();
 const audioDrop = new Audio(
   "https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3"
@@ -42,7 +42,7 @@ function setEvents() {
   });
 
   $(".piece").draggable({
-    containment: 'main',
+    containment: "main",
     snap: ".stage-valid",
     handle: ".piece-color",
     cursor: "grabbing",
@@ -69,14 +69,14 @@ function setEvents() {
 //--------------------Print Stage
 function printStage(arr) {
   $("#moves").text("Nº de movimentos: " + 0);
-  $("section").html("");
-  $("section").append('<div class="stage"></div>');
+  $("#sectionContent").html("");
+  $("#sectionContent").append('<div class="stage"></div>');
   //forEach piece of the stage
   arr.forEach((elem) => {
-    $("section > div.stage").append('<div class="column"></div>');
+    $("#sectionContent > div.stage").append('<div class="column"></div>');
     for (let column of elem) {
       const classDiv = column ? "stage-valid" : "stage-invalid";
-      $("section > div.stage > div:last-child").append(
+      $("#sectionContent > div.stage > div:last-child").append(
         `<div class="${classDiv}"></div>`
       );
     }
@@ -143,10 +143,10 @@ function validation(e) {
     let valorVal;
     positions.forEach((validate) => {
       if (
-        parseInt(validate[0]) >= parseInt(elem.x)-1 &&
-        parseInt(validate[0]) <= parseInt(elem.x)+1 &&
-        parseInt(validate[1]) >= parseInt(elem.y)-1 &&
-        parseInt(validate[1]) <= parseInt(elem.y)+1 
+        parseInt(validate[0]) >= parseInt(elem.x) - 1 &&
+        parseInt(validate[0]) <= parseInt(elem.x) + 1 &&
+        parseInt(validate[1]) >= parseInt(elem.y) - 1 &&
+        parseInt(validate[1]) <= parseInt(elem.y) + 1
       ) {
         valorVal = true;
       }
@@ -158,15 +158,16 @@ function validation(e) {
   if (validOrInvalid.every((elem) => elem)) {
     $(".piece-color").css("background", "green");
     celebration.play();
-    if(!setGetAccount("add")) $('#modal-reset').css('display', 'block');
+    if (!setGetAccount("add")) $("#modal-reset").css("display", "block");
     else $("#myModal").css("display", "block");
     $("#close-lvl").click(() => {
       $("#myModal").css("display", "none");
       requisitions();
+      celebration.pause();
     });
     $("#close-final").click(() => {
-        window.location.href = "http://localhost:8000/";
-    })
+      window.location.href = "http://localhost:8000/";
+    });
   }
 }
 

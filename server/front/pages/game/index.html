@@ -17,9 +17,24 @@
 
   <body>
     <header>
-      <h1 id="level-header">Fase 1</h1>
-      <h3 id="moves">Nº de movimentos: 0</h3>
+      <div id="backArrowDiv">
+        <img src="./assets/icons/backArrow.svg" alt="" />
+      </div>
+      <div id="gameLogo">
+        <div class="title" id="logoLine1">
+          <div class="yellowSquare">
+            <h1>a</h1>
+          </div>
+          <h1>lpha</h1>
+        </div>
+        <div class="title" id="logoLine2">
+          <div class="yellowSquare"><h1>p</h1></div>
+          <div class="yellowSquare"><h1>u</h1></div>
+          <h1>zzle</h1>
+        </div>
+      </div>
     </header>
+
     <main>
       <div id="pieces">
         <div id="piecesHeader">
@@ -27,7 +42,13 @@
         </div>
         <div id="piecesContent"></div>
       </div>
-      <section id="stage"></section>
+      <section id="stage">
+        <div id="stageHeader">
+          <h3 id="level-header"></h3>
+          <h3 id="moves"></h3>
+        </div>
+        <div id="sectionContent"></div>
+      </section>
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -67,9 +88,10 @@
             <p>Você é um verdadeiro Campeão!</p>
             <img src="assets/icons/trophy.png" />
             <p>Resete para melhorar sua pontuação,</p>
-            <br/>
+            <br />
             <p>ou mantenha sua atual colocação no Ranking!</p>
-            <button id="reset">Resetar</button> <button id="manter">Manter</button>
+            <button id="reset">Resetar</button>
+            <button id="manter">Manter</button>
           </div>
           <div class="modal-footer">
             <br />
