@@ -6,6 +6,7 @@ module.exports = class User {
     this.password = password;
     this.level = 1;
     this.moviesPiece = 0;
+    this.moviesPieceAll = {};
     this.id = randomBytes(10).toString('hex');
   }
 };

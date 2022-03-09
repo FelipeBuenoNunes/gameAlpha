@@ -1,25 +1,26 @@
 const url = "http://localhost:8080";
 
-export async function level(lvl) {
+async function level(lvl) {
   const response = fetch(url + "/getLevel?lvl=" + lvl);
   return await response.then((x) => x.json());
 }
 let points = 0;
 
-export const addPoint = () => ++points;
+const addPoint = () => ++points;
 
 let saveAccount;
-export function setGetAccount(account) {
+function setGetAccount(account) {
   if (account === "add") {
     updateRanking();
-    if(saveAccount.level !== 10) {
-      saveAccount.level++;
+    if(saveAccount.currentLevel !== 10) {
+      saveAccount.currentLevel++;
       return true;
     }
     return false;
   } else if (saveAccount) return saveAccount;
   else saveAccount = account;
 }
+
 
 async function updateRanking() {
   try {
@@ -32,7 +33,8 @@ async function updateRanking() {
       body: JSON.stringify({
         username: saveAccount.username,
         moviesPiece: points,
-        id: saveAccount.id,
+        currentLevel: saveAccount.currentLevel,
+        id: saveAccount.id
       }),
     });
     points = 0;
@@ -41,3 +43,4 @@ async function updateRanking() {
     return "Algo deu errado!";
   }
 }
+export {setGetAccount, addPoint, level}

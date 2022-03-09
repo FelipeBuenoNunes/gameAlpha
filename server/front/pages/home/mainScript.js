@@ -136,7 +136,7 @@ $(document).ready(function () {
 const url = "http://localhost:8080/";
 function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
-    console.log("O seu username está vazio ou a senha está vazia");
+    $('#registerInfo').text("O seu username está vazio ou a senha está vazia");
     return;
   }
 
@@ -153,19 +153,19 @@ function login(e) {
     }),
   })
     .then((res) => {
-      if (!res.ok) throw new Error(res);
+      //if (!res.ok) throw new Error(res);
       return res.text();
     })
     .then((response) => {
       try {
         JSON.parse(response);
         sessionStorage.setItem("account", response);
-        window.location.href = "/game";
+        window.location.href = "/stage";
       } catch (e) {
-        console.log(response);
+        $('#registerInfo').text(response);
       }
     })
-    .catch((e) => console.log(e));
+    .catch((e) => e);
 }
 
 

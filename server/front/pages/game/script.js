@@ -5,6 +5,7 @@ $(function () {
     const session = JSON.parse(sessionStorage.getItem("account"));
     if (session === null) throw new Error("error");
     setGetAccount(session);
+    console.log(sessionStorage);
     sessionStorage.clear();
     requisitions();
   } catch (e) {
@@ -14,7 +15,8 @@ $(function () {
 });
 
 async function requisitions() {
-  const lvl = await level(setGetAccount().level);
+  const lvl = await level(setGetAccount().currentLevel);
+  console.log(lvl);
   $("#level-header").text("Fase: " + lvl.level);
   printStage(lvl.stage);
   pieces = lvl.pieces;
@@ -154,7 +156,7 @@ function validation(e) {
 
     validOrInvalid.push(valorVal);
   }
-  //Here is the validation
+  //Validation is here
   if (validOrInvalid.every((elem) => elem)) {
     $(".piece-color").css("background", "green");
     celebration.play();
@@ -163,7 +165,7 @@ function validation(e) {
     $("#close-lvl").click(() => {
       $("#myModal").css("display", "none");
       requisitions();
-      celebration.pause();
+      celebration.stop();
     });
     $("#close-final").click(() => {
       window.location.href = "http://localhost:8000/";
@@ -171,7 +173,7 @@ function validation(e) {
   }
 }
 
-// ------------------Validation stage pieces on top of stage pieces
+//---------------Validation stage pieces on top of stage pieces
 function reverseValidation(e) {
   revertPiece = 0;
   const allPieces = document.getElementsByClassName("piece-color");

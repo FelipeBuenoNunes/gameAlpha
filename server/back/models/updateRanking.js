@@ -7,8 +7,15 @@ module.exports = (user) => {
 
     dataUsers.some((userCurrent) => {
       if (userCurrent.id === user.id) {
-        if (userCurrent.level !== 10) userCurrent.level += 1;
-        userCurrent.moviesPiece += Number(user.moviesPiece);
+        console.log("AAAAAAA");
+        if (userCurrent.level !== 10 && userCurrent.level === user.currentLevel) userCurrent.level += 1;
+        if(user.moviesPiece < userCurrent.moviesPieceAll[user.currentLevel] || !userCurrent.moviesPieceAll[user.currentLevel]){
+          userCurrent.moviesPieceAll[user.currentLevel] = Number(user.moviesPiece);
+          userCurrent.moviesPiece = 0;
+          Object.values(userCurrent.moviesPieceAll).forEach(element => {
+            userCurrent.moviesPiece += element;
+          });
+        }
         return true;
       }
       return false;
