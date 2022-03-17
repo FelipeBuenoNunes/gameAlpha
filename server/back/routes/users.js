@@ -41,9 +41,4 @@ module.exports = (app) => {
       }
     }
   });
-
-  app.put("/reset-account", (req, res) => {
-    if(!req.body.id || req.body.length > 1) res.send('O ID precisa ser enviado!');
-    else res.send(resetAccount(req.body.id));
-  });
 };

@@ -80,6 +80,7 @@ for (let i = 0; i < stages.length; i++) {
     else stages[i].style.filter = "grayscale(1)";
 }
 
+//ecolhe fase
 function play() {
     if (this.innerText > session.level) return;
     session.currentLevel = Number(this.innerText);

@@ -171,9 +171,6 @@ function login(e) {
 
 //----------MODAL--------------//
 
-
-
-
 function ranking() {
   $('#ranking-persons').html('');
   fetch(url + "ranking")
@@ -196,5 +193,5 @@ function ranking() {
   }
   $('.close').click(() => {
     $('.modal').css('display', 'none');
-  })
+  });
 }

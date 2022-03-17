@@ -5,7 +5,7 @@ const crypto = require("crypto");
 
 module.exports = (newUser) => {
   try {
-    newUser.password = crypto.createHash('sha256').update(newUser.password).digest('base64');
+    newUser.password = crypto.createHash('sha256').update(newUser.password).digest('hex');
     newUser = new User(newUser.username, newUser.password);
 
     let newData = [newUser];
