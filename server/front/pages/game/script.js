@@ -206,21 +206,10 @@ function reverseValidation(e) {
     }
   }
 }
+
 //Voltar página
-
-// {
-//   "username": "felipe",
-//   "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-//   "level": 1,
-//   "moviesPiece": 0,
-//   "moviesPieceAll": {},
-//   "id": "4b3aea8665d9bc279852",
-//   "currentLevel": 1
-// }
-
 function backPage(){
     let session = setGetAccount();
-    console.log(session);
     session.level = session.currentLevel > session.level ? session.currentLevel : session.level;
     sessionStorage.setItem("account", JSON.stringify(session));
     window.location.href = "/stage";
