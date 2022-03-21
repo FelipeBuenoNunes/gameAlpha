@@ -1,17 +1,19 @@
 const crypto = require("crypto");
-const getUsers = require("./getUsers");
+const configDb = require('../config/configDb');
 
-module.exports = (user) => {
-  try {
-    const userCurrent = JSON.parse(getUsers()).filter((element) => element.username === user.username)[0];
+module.exports = async (user) => {
+
+  try{
     user.password = crypto.createHash('sha256').update(user.password).digest('hex');
-    if (!userCurrent || userCurrent.password !== user.password)
-      return "Usuário ou senha incorreta";
-      
-    delete userCurrent.password;
-    return [200, userCurrent];
-  } catch (e) {
+    //Pegando o user no banco de dados
+    const result = await configDb.query(`SELECT id, username, level, password FROM users WHERE username = '${user.username}'`);
+    //Caso a senha esteja incorreta
+    if(result.rows.length < 1 || !(result.rows[0].password === user.password)) return "Usuário ou senha incorreta"
+    //Deletando password para mandar para o front sem
+    delete result.rows[0].password;
+    return [200, result.rows[0]];
+  }catch(e){
     console.log(e);
-    return [500, "error"];
+    return [500, "error"]
   }
 };

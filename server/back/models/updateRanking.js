@@ -1,41 +1,26 @@
-const fs = require("fs");
-const getUsers = require("./getUsers");
+const configDb = require('../config/configDb')
 
-module.exports = (user) => {
-  try {
-    const dataUsers = JSON.parse(getUsers());
-
-    dataUsers.some((userCurrent) => {
-      if (userCurrent.id === user.id) {
-        console.log("AAAAAAA");
-        if (userCurrent.level !== 10 && userCurrent.level === user.currentLevel) userCurrent.level += 1;
-        if(user.moviesPiece < userCurrent.moviesPieceAll[user.currentLevel] || !userCurrent.moviesPieceAll[user.currentLevel]){
-          userCurrent.moviesPieceAll[user.currentLevel] = Number(user.moviesPiece);
-          userCurrent.moviesPiece = 0;
-          Object.values(userCurrent.moviesPieceAll).forEach(element => {
-            userCurrent.moviesPiece += element;
-          });
-        }
-        return true;
+module.exports = async (user) => {
+  try{
+    const result = await configDb.query(`SELECT movies_piece FROM level_movies WHERE id_user = ${user.id} AND level = ${user.currentLevel}`);        
+    //Caso não possua um ranking salvo 
+    if(result.rows.length < 1){
+      if(user.currentLevel < 10){
+        await configDb.query(`UPDATE users SET level = (level+1) WHERE id = ${user.id}`);
       }
-      return false;
-    });
-
-    dataUsers.sort(function (a, b) {
-      if (a.level === b.level) {
-        return a.moviesPiece - b.moviesPiece;
-      }
-      return b.level - a.level;
-    });
-
-    fs.writeFileSync(
-      "./infrastructure/dataUsers.json",
-      JSON.stringify(dataUsers)
-    );
-
+      await configDb.query(`INSERT INTO level_movies(id_user, level, movies_piece) VALUES(${user.id}, ${user.currentLevel}, ${user.moviesPiece})`);
+    }//Caso a pontuação atual for melhor
+    else if(result.rows[0].movies_piece > user.moviesPiece){
+      await configDb.query(`UPDATE level_movies SET movies_piece = ${user.moviesPiece} WHERE id_user = ${user.id} AND level = ${user.currentLevel}`);
+    }
+    //Somar e depois fazer o update na tabela de users    
+    const sum = (await configDb.query(`SELECT movies_piece FROM level_movies WHERE id_user = ${user.id}`))
+      .rows.reduce((acc, current) => acc += current.movies_piece, 0);
+    await configDb.query(`UPDATE users SET movies_piece_all = ${sum} WHERE id = ${user.id}`);
+    
     return "Atualizado com sucesso";
-  } catch (e) {
+  }catch(e){
     console.log(e);
-    return e;
+    return "Error";
   }
 };

@@ -31,8 +31,6 @@ function ranking() {
             if (cont > 10) break;
             rankingPersons.append(document.createElement('tr'));
 
-
-
             const elem = document.querySelector('#ranking-persons > tr:last-child')
             let td = document.createElement('td');
             td.append(cont);
@@ -47,7 +45,7 @@ function ranking() {
             elem.append(td)
 
             td = document.createElement('td');
-            td.append(user.moviesPiece);
+            td.append(user.movies_piece_all);
             elem.append(td)
 
             cont++;

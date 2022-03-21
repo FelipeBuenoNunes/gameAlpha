@@ -186,7 +186,7 @@ function ranking() {
         .append(`<td>${cont}º</td>`)
         .append(`<td>${user.username}</td>`)
         .append(`<td>${user.level}</td>`)
-        .append(`<td>${user.moviesPiece}</td>`)
+        .append(`<td>${user.movies_piece_all}</td>`)
       cont++;
     }
     $('.modal').css('display', "block");
