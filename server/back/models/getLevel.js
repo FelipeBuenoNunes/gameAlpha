@@ -1,5 +1,4 @@
 const fs = require("fs");
-const getUsers = require("./getUsers");
 
 module.exports = (lvl) => {
   const teste = JSON.parse(
