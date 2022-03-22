@@ -62,7 +62,6 @@ let session;
 try {
     session = JSON.parse(sessionStorage.getItem("account"));
     if (session === null) throw new Error("error");
-    console.log(session);
     sessionStorage.clear();
 } catch (e) {
     sessionStorage.clear();
