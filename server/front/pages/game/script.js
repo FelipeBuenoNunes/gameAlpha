@@ -24,23 +24,22 @@ async function requisitions() {
 }
 
 let revertPiece;
-let dragging = 0;
-const audioDrag = new Audio("./assets/songs/drag.mp3");
-const entrar = new Audio("./assets/songs/entrar.mp3");
-const celebration = new Audio("./assets/songs/celebration.mp3");
-entrar.play();
-const audioDrop = new Audio(
-  "https://assets.mixkit.co/sfx/preview/mixkit-small-wood-plank-pile-drop-3141.mp3"
-);
+const audioRotate = new Audio("./assets/songs/poppin.mp3");
+const audioDrag = new Audio("./assets/songs/bubble-pop.mp3");
+const audioDrop = new Audio("./assets/songs/drag.mp3");
+const music = new Audio("./assets/songs/music.mp3");
+const correct = new Audio("./assets/songs/correct.mp3");
+
+music.play();
+music.loop = true;
+music.volume = 0.1;
 
 //Set events every elements
 function setEvents() {
-  $(".stage-valid").droppable({
+  $("section").droppable({
     drop: function (event, ui) {
-      alert("aaaa");
+      audioDrop.play();
     },
-    accept: ".piece-color",
-    greedy: true,
   });
 
   $(".piece").draggable({
@@ -111,6 +110,7 @@ function printPieces() {
 
 // ------------------Rotate
 function rotate(e) {
+  audioRotate.play();
   $("#moves").text("Nº de movimentos: " + addPoint());
   const _e = e.target.parentNode.offsetParent;
   const _eId = _e.id.replace(/\D/g, "");
@@ -160,14 +160,13 @@ function validation(e) {
   }
   //Validation is here
   if (validOrInvalid.every((elem) => elem)) {
+    correct.play();
     $(".piece-color").css("background", "green");
-    celebration.play();
     if (!setGetAccount("add")) $("#modal-reset").css("display", "block");
     else $("#myModal").css("display", "block");
     $("#close-lvl").click(() => {
       $("#myModal").css("display", "none");
       requisitions();
-      celebration.stop();
     });
     $("#close-final").click(() => {
       window.location.href = "http://localhost:8000/";
@@ -208,10 +207,11 @@ function reverseValidation(e) {
 }
 
 //Voltar página
-function backPage(){
-    let session = setGetAccount();
-    session.level = session.currentLevel > session.level ? session.currentLevel : session.level;
-    sessionStorage.setItem("account", JSON.stringify(session));
-    window.location.href = "/stage";
-    session = {"username": session.username, "level": session.level};
+function backPage() {
+  let session = setGetAccount();
+  session.level =
+    session.currentLevel > session.level ? session.currentLevel : session.level;
+  sessionStorage.setItem("account", JSON.stringify(session));
+  window.location.href = "/stage";
+  session = { username: session.username, level: session.level };
 }

@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  const tetrisTheme = new Audio("./assets/songs/music.mp3");
+  const selectSound = new Audio("./assets/songs/select.mp3");
+
+  tetrisTheme.play();
+  tetrisTheme.loop = true;
+  tetrisTheme.volume = 0.1;
+
   let twinkle = false;
   $("#play").mouseover(() => {
     $("#playSquare").removeClass("inviSquare");
@@ -67,6 +74,7 @@ $(document).ready(function () {
   });
 
   $("#leaderboardbtn").on("click", () => {
+    selectSound.play();
     ranking();
   });
 
@@ -93,38 +101,45 @@ $(document).ready(function () {
   });
 
   $("#closeldbrd").on("click", () => {
+    selectSound.play();
     $("main aside").css("right", "-100vw");
   });
 
   $("#play").on("click", () => {
+    selectSound.play();
     $("main aside").css("right", "-100vw");
     $("#content").css("transform", "translate(-150vw)");
     $("#registersect").css("transform", "translate(-150vw)");
   });
 
   $("#closeregister").on("click", () => {
+    selectSound.play();
     $("#content").css("transform", "translate(0px)");
     $("#registersect").css("transform", "translate(50vw)");
   });
 
   $("#tutorial").on("click", () => {
+    selectSound.play();
     $("main aside").css("right", "-100vw");
     $("#content").css("transform", "translate(-150vw)");
     $("#tutorialsect").css("transform", "translate(-150vw)");
   });
 
   $("#closetutorial").on("click", () => {
+    selectSound.play();
     $("#content").css("transform", "translate(0px)");
     $("#tutorialsect").css("transform", "translate(50vw)");
   });
 
   $("#options").on("click", () => {
+    selectSound.play();
     $("main aside").css("right", "-100vw");
     $("#content").css("transform", "translate(-150vw)");
     $("#optionssect").css("transform", "translate(-150vw)");
   });
 
   $("#closeoptions").on("click", () => {
+    selectSound.play();
     $("#content").css("transform", "translate(0px)");
     $("#optionssect").css("transform", "translate(50vw)");
   });
@@ -136,7 +151,7 @@ $(document).ready(function () {
 const url = "http://localhost:8080/";
 function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
-    $('#registerInfo').text("O seu username está vazio ou a senha está vazia");
+    $("#registerInfo").text("O seu username está vazio ou a senha está vazia");
     return;
   }
 
@@ -162,36 +177,35 @@ function login(e) {
         sessionStorage.setItem("account", response);
         window.location.href = "/stage";
       } catch (e) {
-        $('#registerInfo').text(response);
+        $("#registerInfo").text(response);
       }
     })
     .catch((e) => e);
 }
 
-
 //----------MODAL--------------//
 
 function ranking() {
-  $('#ranking-persons').html('');
+  $("#ranking-persons").html("");
   fetch(url + "ranking")
     .then((response) => response.json())
-    .then(out => printModal(out));
+    .then((out) => printModal(out));
 
   function printModal(users) {
     let cont = 1;
     for (let user of users) {
       if (cont > 10) break;
-      $('#ranking-persons').append('<tr></tr>');
-      $('#ranking-persons > tr:last-child')
+      $("#ranking-persons").append("<tr></tr>");
+      $("#ranking-persons > tr:last-child")
         .append(`<td>${cont}º</td>`)
         .append(`<td>${user.username}</td>`)
         .append(`<td>${user.level}</td>`)
-        .append(`<td>${user.movies_piece_all}</td>`)
+        .append(`<td>${user.movies_piece_all}</td>`);
       cont++;
     }
-    $('.modal').css('display', "block");
+    $(".modal").css("display", "block");
   }
-  $('.close').click(() => {
-    $('.modal').css('display', 'none');
+  $(".close").click(() => {
+    $(".modal").css("display", "none");
   });
 }
