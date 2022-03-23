@@ -1,3 +1,5 @@
+const urlBackend = "http://localhost:8080/";
+const url = "http://localhost:8000/";
 const music = new Audio("./assets/songs/music.mp3");
 const selectSound = new Audio("./assets/songs/select.mp3");
 
@@ -26,11 +28,14 @@ document.getElementById("closetutorial").addEventListener("click", () => {
 //Open modal
 document.getElementById("crown-ranking").addEventListener("click", ranking);
 
+//Exit page
+document.getElementById('exit_button').addEventListener("click", () => window.location.href = url);
+
 //Print function of modal
 function ranking() {
   const rankingPersons = document.getElementById("ranking-persons");
   rankingPersons.innerHTML = "";
-  fetch("http://localhost:8080/ranking")
+  fetch(urlBackend + "ranking")
     .then((response) => response.json())
     .then((out) => printModal(out));
 
@@ -74,7 +79,7 @@ try {
     sessionStorage.clear();
 } catch (e) {
   sessionStorage.clear();
-  window.location.href = "http://localhost:8000/";
+  window.location.href = url;
 }
 
 const stages = document.getElementsByClassName("stage");

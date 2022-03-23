@@ -65,6 +65,7 @@ function setEvents() {
   $(".piece-color").dblclick(rotate);
 
   $("#back").click(backPage);
+
 }
 
 //--------------------Print Stage

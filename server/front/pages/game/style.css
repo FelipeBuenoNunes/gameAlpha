@@ -72,6 +72,10 @@ header h1 {
   font-size: 36px;
 }
 
+#back{
+  cursor: pointer;
+}
+
 header #backArrowDiv {
   margin: 0 50px;
 }
@@ -236,6 +240,18 @@ main section #stageHeader {
   animation-duration: 0.4s;
   color: aliceblue;
   text-align: center;
+}
+
+#header-reset{
+  height: auto;
+}
+
+#footer-reset{
+  height: auto;
+}
+
+#trophy{
+  margin-top: 2.5vh;
 }
 
 /* Add Animation */

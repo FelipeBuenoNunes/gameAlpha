@@ -153,6 +153,12 @@ function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
     $("#registerInfo").text("O seu username está vazio ou a senha está vazia");
     return;
+  }else if($("#nameInput").val().length > 20 || $("#nameInput").val().length < 3){
+    $("#registerInfo").text("O seu username deve estar entre 3 e 20 caracteres");
+    return;
+  }else if($("#passwordInput").val().length < 5){
+    $("#registerInfo").text("A sua senha deve conter pelo menos 5 caracteres");
+    return;
   }
 
   const route = e.target.id === "loginButton" ? "login-user" : "cadaster-user";
