@@ -77,7 +77,7 @@ body {
 }
 
 #innerP {
-  margin: 0 0 0 15px;
+  margin: 10px 0 0 15px;
 }
 
 #innerIcon {
@@ -225,7 +225,7 @@ main section #registercontent #contentButton button:hover {
   cursor: pointer;
 }
 
-#registerInfo{
+#registerInfo {
   margin-top: 3vh;
   color: #e261aa;
   text-align: center;

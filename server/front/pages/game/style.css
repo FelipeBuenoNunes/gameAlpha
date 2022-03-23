@@ -24,8 +24,40 @@ header {
   width: 100%;
   height: 250px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   color: white;
+}
+
+header #leftHeader {
+  display: flex;
+  align-items: center;
+}
+
+header #rightHeader {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+header #rightHeader h4 {
+  color: var(--pink);
+}
+
+header #rightHeader #volume {
+  -webkit-appearance: none;
+  background: var(--black);
+  width: 200px;
+  height: 15px;
+  border: 3px solid var(--pink);
+}
+
+header #rightHeader #volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+  border: 2px solid #ffdaef;
 }
 
 header h1 {

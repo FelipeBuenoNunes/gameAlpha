@@ -32,7 +32,7 @@ const correct = new Audio("./assets/songs/correct.mp3");
 
 music.play();
 music.loop = true;
-music.volume = 0.1;
+music.volume = 0.5;
 
 //Set events every elements
 function setEvents() {
@@ -215,3 +215,11 @@ function backPage() {
   window.location.href = "/stage";
   session = { username: session.username, level: session.level };
 }
+
+$("#volume").change(function () {
+  music.volume = this.value / 500;
+  audioRotate.volume = this.value / 100;
+  audioDrag.volume = this.value / 100;
+  audioDrop.volume = this.value / 100;
+  correct.volume = this.value / 100;
+});

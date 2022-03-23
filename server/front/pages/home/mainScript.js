@@ -4,7 +4,7 @@ $(document).ready(function () {
 
   tetrisTheme.play();
   tetrisTheme.loop = true;
-  tetrisTheme.volume = 0.1;
+  tetrisTheme.volume = 0.25;
 
   let twinkle = false;
   $("#play").mouseover(() => {

@@ -17,21 +17,34 @@
 
   <body>
     <header>
-      <div id="backArrowDiv">
-        <img id="back" src="./assets/icons/backArrow.svg" alt="arrow" />
-      </div>
-      <div id="gameLogo">
-        <div class="title" id="logoLine1">
-          <div class="yellowSquare">
-            <h1>a</h1>
+      <div id="leftHeader">
+        <div id="backArrowDiv">
+          <img id="back" src="./assets/icons/backArrow.svg" alt="arrow" />
+        </div>
+        <div id="gameLogo">
+          <div class="title" id="logoLine1">
+            <div class="yellowSquare">
+              <h1>A</h1>
+            </div>
+            <h1>LPHA</h1>
           </div>
-          <h1>lpha</h1>
+          <div class="title" id="logoLine2">
+            <div class="yellowSquare"><h1>P</h1></div>
+            <div class="yellowSquare"><h1>U</h1></div>
+            <h1>ZZLE</h1>
+          </div>
         </div>
-        <div class="title" id="logoLine2">
-          <div class="yellowSquare"><h1>p</h1></div>
-          <div class="yellowSquare"><h1>u</h1></div>
-          <h1>zzle</h1>
-        </div>
+      </div>
+      <div id="rightHeader">
+        <h4>VOLUME:</h4>
+        <input
+          type="range"
+          step="1"
+          min="0"
+          max="100"
+          value="100"
+          id="volume"
+        />
       </div>
     </header>
 
