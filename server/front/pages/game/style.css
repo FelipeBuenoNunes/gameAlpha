@@ -60,6 +60,14 @@ header #rightHeader #volume::-webkit-slider-thumb {
   border: 2px solid #ffdaef;
 }
 
+header #rightHeader #volume::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+  border: 2px solid #ffdaef;
+}
+
 header h1 {
   font-size: 36px;
 }

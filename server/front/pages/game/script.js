@@ -215,7 +215,7 @@ function backPage() {
 }
 
 $("#volume").change(function () {
-  music.volume = this.value / 500;
+  music.volume = this.value / 400;
   audioRotate.volume = this.value / 100;
   audioDrag.volume = this.value / 100;
   audioDrop.volume = this.value / 100;
