@@ -5,7 +5,6 @@ $(function () {
     const session = JSON.parse(sessionStorage.getItem("account"));
     if (session === null) throw new Error("error");
     setGetAccount(session);
-    console.log(sessionStorage);
     sessionStorage.clear();
     requisitions();
   } catch (e) {
@@ -16,7 +15,6 @@ $(function () {
 
 async function requisitions() {
   const lvl = await level(setGetAccount().currentLevel);
-  console.log(lvl);
   $("#level-header").text("Fase: " + lvl.level);
   printStage(lvl.stage);
   pieces = lvl.pieces;
@@ -90,8 +88,8 @@ function printStage(arr) {
 function printPieces() {
   $("#piecesContent").html("");
   //forEach in the piece
-  pieces.forEach((elem) => {
-    $("#piecesContent").append(`<div class="piece" id="${elem.id}"></div>`);
+  pieces.forEach((elem, id) => {
+    $("#piecesContent").append(`<div class="piece" id="${id}"></div>`);
 
     //forEach column in the piece
     elem.shape.forEach((column) => {
@@ -107,14 +105,14 @@ function printPieces() {
   });
   setEvents();
 }
-
+ 
 // ------------------Rotate
 function rotate(e) {
   audioRotate.play();
   $("#moves").text("Nº de movimentos: " + addPoint());
   const _e = e.target.parentNode.offsetParent;
-  const _eId = _e.id.replace(/\D/g, "");
-  const piece = pieces[_eId - 1];
+  //const _eId = _e.id.replace(/\D/g, "");
+  const piece = pieces[Number(_e.id)];
 
   $(_e).css("transition", "500ms");
   piece.deg += 90;
