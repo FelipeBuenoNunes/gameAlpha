@@ -30,7 +30,7 @@ const correct = new Audio("./assets/songs/correct.mp3");
 
 music.play();
 music.loop = true;
-music.volume = 0.5;
+music.volume = 0.25;
 
 //Set events every elements
 function setEvents() {
@@ -105,7 +105,7 @@ function printPieces() {
   });
   setEvents();
 }
- 
+
 // ------------------Rotate
 function rotate(e) {
   audioRotate.play();
