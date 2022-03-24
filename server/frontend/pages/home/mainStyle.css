@@ -81,7 +81,11 @@ body {
 }
 
 #innerIcon {
-  margin: 15px 0 0 0;
+  margin: 15px 0 0 10px;
+}
+
+#innerPlay {
+  margin: 20px 0 0 8px;
 }
 
 main {
@@ -106,6 +110,7 @@ main #volumeContent {
   right: 200px;
   display: flex;
   align-items: center;
+  z-index: 50;
 }
 
 main #volumeContent h4 {

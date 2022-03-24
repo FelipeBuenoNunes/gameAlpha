@@ -29,7 +29,9 @@ document.getElementById("closetutorial").addEventListener("click", () => {
 document.getElementById("crown-ranking").addEventListener("click", ranking);
 
 //Exit page
-document.getElementById('exit_button').addEventListener("click", () => window.location.href = url);
+document
+  .getElementById("exit_button")
+  .addEventListener("click", () => (window.location.href = url));
 
 //Print function of modal
 function ranking() {
@@ -74,9 +76,9 @@ function ranking() {
 
 let session;
 try {
-    session = JSON.parse(sessionStorage.getItem("account"));
-    if (session === null) throw new Error("error");
-    sessionStorage.clear();
+  session = JSON.parse(sessionStorage.getItem("account"));
+  if (session === null) throw new Error("error");
+  sessionStorage.clear();
 } catch (e) {
   sessionStorage.clear();
   window.location.href = url;
@@ -97,3 +99,8 @@ function play() {
   sessionStorage.setItem("account", JSON.stringify(session));
   window.location.href = "/game";
 }
+
+$("#volume").change(function () {
+  music.volume = this.value / 1000;
+  selectSound.volume = this.value / 100;
+});

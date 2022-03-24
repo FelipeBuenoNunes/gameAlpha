@@ -12,7 +12,6 @@
   font-family: "Press Start 2P", cursive;
 }
 
-
 body {
   overflow-x: hidden;
   background-color: var(--black);
@@ -22,11 +21,11 @@ body {
   user-select: none; /* Standard */
 }
 
-#stage{
+#stage {
   transition: transform 0.8s;
 }
 
-#exit_button{
+#exit_button {
   align-self: flex-start;
   margin-left: 4vw;
   color: var(--yellow);
@@ -45,14 +44,14 @@ header {
   align-items: center;
 }
 
-header img:first-child{
+header img:first-child {
   width: clamp(80px, 4.5vw, 110px);
   height: clamp(35px, 3.5vw, 75px);
   position: absolute;
   left: 50px;
 }
 
-header img:last-child{
+header img:last-child {
   width: clamp(125px, 6.9vw, 175px);
   height: clamp(75px, 4.5vw, 100px);
   position: absolute;
@@ -69,6 +68,44 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  /* position: relative; */
+}
+
+main #volumeContent {
+  position: absolute;
+  top: 160px;
+  right: 70px;
+  display: flex;
+  align-items: center;
+  z-index: 50;
+}
+
+main #volumeContent h4 {
+  color: var(--pink);
+}
+
+main #volumeContent #volume {
+  -webkit-appearance: none;
+  background: var(--black);
+  width: 200px;
+  height: 15px;
+  border: 3px solid var(--pink);
+}
+
+main #volumeContent #volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+  border: 2px solid #ffdaef;
+}
+
+main #volumeContent #volume::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+  border: 2px solid #ffdaef;
 }
 
 main section {
@@ -79,11 +116,11 @@ main section {
   justify-content: center;
 }
 
-.stage{
+.stage {
   cursor: pointer;
 }
 
-.stage > img{
+.stage > img {
   height: clamp(110px, calc(8vw - 3px), 262px);
   width: clamp(100px, calc(6vw- 5px), 242px);
 }
@@ -102,14 +139,13 @@ main section .stage h2 {
   color: var(--yellow);
 }
 
-main > img#help{
+main > img#help {
   position: absolute;
   width: clamp(82px, 4.5vw, 112px);
   height: clamp(82px, 4.5vw, 112px);
   right: 70px;
   bottom: 70px;
 }
-
 
 /* Tutorial */
 .tutorialsect {
@@ -127,12 +163,12 @@ main > img#help{
   background-color: #252525;
 }
 
-.elemVisible{
+.elemVisible {
   transform: translate(-150vw);
   position: absolute;
 }
 
-.mainHidden{
+.mainHidden {
   transform: translate(-150vw);
   position: absolute;
 }
@@ -146,7 +182,6 @@ main > img#help{
   align-items: center;
   justify-content: center;
 }
-
 
 #tutorialimgs {
   display: flex;
@@ -180,8 +215,8 @@ main > img#help{
 }
 
 #help,
-#crown-ranking{
-  cursor: pointer;  
+#crown-ranking {
+  cursor: pointer;
 }
 
 /*MODAL ranking*/

@@ -1,153 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Stage</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <title>Stage</title>
-</head>
-
-<body>
-  <div id="stage">
-    <header>
-      <p id="exit_button">SAIR</p>
-      <h1>LEVELS</h1>
-      <img draggable="false"id="crown-ranking" src="assets/crown.svg" alt="coroa do ranking" />
-    </header>
-    <main>
-      <section>
-        <div class="stage" id="stage01">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>01</h2>
+  <body>
+    <div id="stage">
+      <header>
+        <p id="exit_button">SAIR</p>
+        <h1>LEVELS</h1>
+        <img
+          draggable="false"
+          id="crown-ranking"
+          src="assets/crown.svg"
+          alt="coroa do ranking"
+        />
+      </header>
+      <main>
+        <div id="volumeContent">
+          <h4>VOLUME:</h4>
+          <input
+            type="range"
+            step="1"
+            min="0"
+            max="100"
+            value="100"
+            id="volume"
+          />
         </div>
-        <div class="stage" id="stage02">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>02</h2>
-        </div>
-        <div class="stage" id="stage03">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>03</h2>
-        </div>
-        <div class="stage" id="stage04">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>04</h2>
-        </div>
-        <div class="stage" id="stage05">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>05</h2>
-        </div>
-        <div class="stage" id="stage06">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>06</h2>
-        </div>
-        <div class="stage" id="stage07">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>07</h2>
-        </div>
-        <div class="stage" id="stage08">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>08</h2>
-        </div>
-        <div class="stage" id="stage09">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>09</h2>
-        </div>
-        <div class="stage" id="stage10">
-          <img draggable="false"src="assets/stage.svg" alt="" />
-          <h2>10</h2>
-        </div>
-      </section>
-      <img draggable="false"src="assets/help.svg" id="help" alt="ajuda" />
-    </main>
-  </div>
-  <!-- Tutorial -->
-  <section class="tutorialsect">
-    <div id="header">
-      <span id="closetutorial" class="closebtn">X</span>
-      <h2>Como jogar</h2>
+        <section>
+          <div class="stage" id="stage01">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>01</h2>
+          </div>
+          <div class="stage" id="stage02">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>02</h2>
+          </div>
+          <div class="stage" id="stage03">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>03</h2>
+          </div>
+          <div class="stage" id="stage04">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>04</h2>
+          </div>
+          <div class="stage" id="stage05">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>05</h2>
+          </div>
+          <div class="stage" id="stage06">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>06</h2>
+          </div>
+          <div class="stage" id="stage07">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>07</h2>
+          </div>
+          <div class="stage" id="stage08">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>08</h2>
+          </div>
+          <div class="stage" id="stage09">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>09</h2>
+          </div>
+          <div class="stage" id="stage10">
+            <img draggable="false" src="assets/stage.svg" alt="" />
+            <h2>10</h2>
+          </div>
+        </section>
+        <img draggable="false" src="assets/help.svg" id="help" alt="ajuda" />
+      </main>
     </div>
-    <div id="tutorialimgs">
-      <div>
-        <img draggable="false"src="assets/icons/tuto01.png" class="tutoimg" alt="" />
-        <span class="tutoarrow">-></span>
-        <img draggable="false"src="assets/icons/tuto02.png" class="tutoimg" alt="" />
-        <span class="tutoarrow">-></span>
-        <img draggable="false"src="assets/icons/tuto03.png" class="tutoimg" alt="" />
+    <!-- Tutorial -->
+    <section class="tutorialsect">
+      <div id="header">
+        <span id="closetutorial" class="closebtn">X</span>
+        <h2>Como jogar</h2>
       </div>
-      <div>
-        <img draggable="false"src="assets/icons/tuto04.png" class="tutoimg" alt="" />
-        <span class="tutoarrow">-></span>
-        <img draggable="false"src="assets/icons/tuto05.png" class="tutoimg" alt="" />
+      <div id="tutorialimgs">
+        <div>
+          <img
+            draggable="false"
+            src="assets/icons/tuto01.png"
+            class="tutoimg"
+            alt=""
+          />
+          <span class="tutoarrow">-></span>
+          <img
+            draggable="false"
+            src="assets/icons/tuto02.png"
+            class="tutoimg"
+            alt=""
+          />
+          <span class="tutoarrow">-></span>
+          <img
+            draggable="false"
+            src="assets/icons/tuto03.png"
+            class="tutoimg"
+            alt=""
+          />
+        </div>
+        <div>
+          <img
+            draggable="false"
+            src="assets/icons/tuto04.png"
+            class="tutoimg"
+            alt=""
+          />
+          <span class="tutoarrow">-></span>
+          <img
+            draggable="false"
+            src="assets/icons/tuto05.png"
+            class="tutoimg"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content MÁXIMO DE 10 COLOCAÇÕES-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <br />
+          <h2>Ranking dos melhores!</h2>
+          <br />
+        </div>
+        <div class="modal-body">
+          <table>
+            <thead>
+              <th>Posição</th>
+              <th>Nome</th>
+              <th>Level</th>
+              <th>Movimentos</th>
+            </thead>
+            <tbody id="ranking-persons">
+              <tr>
+                <td>1º</td>
+              </tr>
+              <tr>
+                <td>2º</td>
+              </tr>
+              <tr>
+                <td>3º</td>
+              </tr>
+              <tr>
+                <td>4º</td>
+              </tr>
+              <tr>
+                <td>5º</td>
+              </tr>
+              <tr>
+                <td>6º</td>
+              </tr>
+              <tr>
+                <td>7º</td>
+              </tr>
+              <tr>
+                <td>8º</td>
+              </tr>
+              <tr>
+                <td>9º</td>
+              </tr>
+              <tr>
+                <td>10º</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <br />
+          <h3>Os Lendários do Puzzle!</h3>
+          <br />
+        </div>
       </div>
     </div>
-  </section>
-
-
-  <!-- The Modal -->
-  <div id="myModal" class="modal">
-    <!-- Modal content MÁXIMO DE 10 COLOCAÇÕES-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <span class="close">&times;</span>
-        <br />
-        <h2>Ranking dos melhores!</h2>
-        <br />
-      </div>
-      <div class="modal-body">
-        <table>
-          <thead>
-            <th>Posição</th>
-            <th>Nome</th>
-            <th>Level</th>
-            <th>Movimentos</th>
-          </thead>
-          <tbody id="ranking-persons">
-            <tr>
-              <td>1º</td>
-            </tr>
-            <tr>
-              <td>2º</td>
-            </tr>
-            <tr>
-              <td>3º</td>
-            </tr>
-            <tr>
-              <td>4º</td>
-            </tr>
-            <tr>
-              <td>5º</td>
-            </tr>
-            <tr>
-              <td>6º</td>
-            </tr>
-            <tr>
-              <td>7º</td>
-            </tr>
-            <tr>
-              <td>8º</td>
-            </tr>
-            <tr>
-              <td>9º</td>
-            </tr>
-            <tr>
-              <td>10º</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="modal-footer">
-        <br />
-        <h3>Os Lendários do Puzzle!</h3>
-        <br />
-      </div>
-    </div>
-  </div>
-  <script type="module" src="script.js"></script>
-</body>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
 </html>
