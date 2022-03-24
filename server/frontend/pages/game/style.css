@@ -155,12 +155,13 @@ main section {
   align-items: center;
   justify-content: center;
   position: relative;
+  gap: 7vh;
 }
 
 main section #stageHeader {
-  position: absolute;
+  /* position: absolute;
   top: 0;
-  margin-top: 2vh;
+  margin-top: 2vh; */
   text-align: center;
   color: white;
 }

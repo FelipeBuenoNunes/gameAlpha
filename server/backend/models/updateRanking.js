@@ -5,7 +5,7 @@ module.exports = async (user) => {
     const result = await configDb.query(`SELECT movies_piece FROM level_movies WHERE id_user = ${user.id} AND level = ${user.currentLevel}`);        
     //Caso não possua um ranking salvo 
     if(result.rows.length < 1){
-      if(user.currentLevel < 10){
+      if(user.currentLevel <= 10){
         await configDb.query(`UPDATE users SET level = (level+1) WHERE id = ${user.id}`);
       }
       await configDb.query(`INSERT INTO level_movies(id_user, level, movies_piece) VALUES(${user.id}, ${user.currentLevel}, ${user.moviesPiece})`);

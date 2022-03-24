@@ -1,3 +1,4 @@
+const url = "http://localhost:8000/";
 import { level, setGetAccount, addPoint } from "./requisitions.js";
 let pieces;
 $(function () {
@@ -9,7 +10,7 @@ $(function () {
     requisitions();
   } catch (e) {
     sessionStorage.clear();
-    window.location.href = "http://localhost:8000/";
+    window.location.href = url;
   }
 });
 
@@ -168,7 +169,7 @@ function validation(e) {
       requisitions();
     });
     $("#close-final").click(() => {
-      window.location.href = "http://localhost:8000/";
+      window.location.href = url;
     });
   }
 }
