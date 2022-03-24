@@ -146,6 +146,11 @@ $(document).ready(function () {
 
   //Button login and register
   $("#loginButton, #registerButton").on("click", login);
+
+  $("#volume").change(function () {
+    tetrisTheme.volume = this.value / 400;
+    selectSound.volume = this.value / 100;
+  });
 });
 
 const url = "http://localhost:8080/";
@@ -153,10 +158,15 @@ function login(e) {
   if (!$("#nameInput").val() || !$("#passwordInput").val()) {
     $("#registerInfo").text("O seu username está vazio ou a senha está vazia");
     return;
-  }else if($("#nameInput").val().length > 20 || $("#nameInput").val().length < 3){
-    $("#registerInfo").text("O seu username deve estar entre 3 e 20 caracteres");
+  } else if (
+    $("#nameInput").val().length > 20 ||
+    $("#nameInput").val().length < 3
+  ) {
+    $("#registerInfo").text(
+      "O seu username deve estar entre 3 e 20 caracteres"
+    );
     return;
-  }else if($("#passwordInput").val().length < 5){
+  } else if ($("#passwordInput").val().length < 5) {
     $("#registerInfo").text("A sua senha deve conter pelo menos 5 caracteres");
     return;
   }

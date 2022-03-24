@@ -100,6 +100,42 @@ main {
   transition: transform 0.8s;
 }
 
+main #volumeContent {
+  position: absolute;
+  top: 75px;
+  right: 200px;
+  display: flex;
+  align-items: center;
+}
+
+main #volumeContent h4 {
+  color: var(--pink);
+}
+
+main #volumeContent #volume {
+  -webkit-appearance: none;
+  background: var(--black);
+  width: 200px;
+  height: 15px;
+  border: 3px solid var(--pink);
+}
+
+main #volumeContent #volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+  border: 2px solid #ffdaef;
+}
+
+main #volumeContent #volume::-moz-range-thumb {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background-color: var(--pink);
+  border: 2px solid #ffdaef;
+}
+
 main aside {
   border: 5px solid var(--yellow);
   padding: 30px;
