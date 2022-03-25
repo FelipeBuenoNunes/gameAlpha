@@ -29,8 +29,8 @@ body {
   align-self: flex-start;
   margin-left: 4vw;
   color: var(--yellow);
-  padding: 0.5vw;
-  font-size: 18px;
+  padding: 0.8vw;
+  font-size: 16px;
   position: absolute;
   background-color: var(--blue);
   cursor: pointer;
