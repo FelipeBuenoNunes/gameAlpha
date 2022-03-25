@@ -76,6 +76,10 @@ body {
   cursor: pointer;
 }
 
+#tutorialText {
+  margin-left: 1.6vw;
+}
+
 #innerP {
   margin: 10px 0 0 15px;
 }
@@ -310,7 +314,7 @@ main section #registercontent #contentButton button:hover {
   border-right: 7px dashed var(--blue);
   background-color: transparent;
   position: absolute;
-  margin-left: 4vw;
+  margin-left: 4.65vw;
 }
 
 #topbottomborders {
