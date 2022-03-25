@@ -1,10 +1,10 @@
 $(document).ready(function () {
-  const tetrisTheme = new Audio("./assets/songs/music.mp3");
+  //const tetrisTheme = new Audio("./assets/songs/music.mp3");
   const selectSound = new Audio("./assets/songs/select.mp3");
 
-  tetrisTheme.play();
-  tetrisTheme.loop = true;
-  tetrisTheme.volume = 0.25;
+  //tetrisTheme.play();
+  //tetrisTheme.loop = true;
+  //tetrisTheme.volume = 0.25;
 
   let twinkle = false;
   $("#play").mouseover(() => {
@@ -148,7 +148,7 @@ $(document).ready(function () {
   $("#loginButton, #registerButton").on("click", login);
 
   $("#volume").change(function () {
-    tetrisTheme.volume = this.value / 400;
+    //tetrisTheme.volume = this.value / 400;
     selectSound.volume = this.value / 100;
   });
 });

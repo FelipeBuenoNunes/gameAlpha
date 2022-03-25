@@ -73,8 +73,7 @@ main {
 
 main #volumeContent {
   position: absolute;
-  top: 160px;
-  right: 70px;
+  top: 19vh;
   display: flex;
   align-items: center;
   z-index: 50;
